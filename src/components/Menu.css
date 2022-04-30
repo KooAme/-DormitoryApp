@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+.container {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+}
+.menu {
+  float: left;
+  width: 15%;
+  height: 70vh;
+  background-color: rgb(176, 176, 255);
+  font-size: 12pt;
+  font-family: 'Do Hyeon', sans-serif;
+}
+.MenuName {
+  cursor: pointer;
+  margin-left: 10%;
+}
+.MenuDisappear {
+  cursor: pointer;
+  display: none;
+  margin: 15%;
+}
+.MenuName1 {
+  cursor: pointer;
+  margin: 10%;
+}
+.MenuDisappear1 {
+  display: none;
+  margin: 15%;
+  width: 15vw;
+  height: 35vh;
+}
+.MenuText {
+  margin-top: 10%;
+}
+.MenuMenu {
+  height: 4vh;
+  font-size: 20pt;
+  margin-top: 0;
+  text-align: center;
+  background-color: rgb(74, 74, 116);
+}
+
+.MenuOver {
+  font-size: 20pt;
+  height: 7vh;
+  margin-top: 0;
+  text-align: center;
+  background-color: rgb(74, 74, 116);
+}
