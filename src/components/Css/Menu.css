@@ -16,8 +16,8 @@ body {
 .menu {
   float: left;
   width: 15%;
-  height: 70vh;
-  background-color: rgb(176, 176, 255);
+  height: 75vh;
+  background-color: rgb(171, 192, 219);
   font-size: 12pt;
   font-family: 'Do Hyeon', sans-serif;
 }
@@ -42,13 +42,15 @@ body {
 }
 .MenuText {
   margin-top: 10%;
+  cursor: pointer;
 }
 .MenuMenu {
+  cursor: pointer;
   height: 4vh;
   font-size: 20pt;
   margin-top: 0;
   text-align: center;
-  background-color: rgb(74, 74, 116);
+  background-color: rgb(95, 124, 158);
 }
 
 .MenuOver {

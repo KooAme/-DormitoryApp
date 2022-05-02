@@ -1,64 +1,43 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Menu from './components/Menu';
-import Tail from './components/Tail';
 import Login from './components/Login';
 import Header from './components/Header';
-import ManagerPage from './components/Main/ManagerPage';
-import AsRequest from './components/Main/AsRequest';
-import Gym from './components/Main/GymReser';
-import OverNight from './components/Main/OverNight';
-import ShuttleManager from './components/Main/ShuttleManager';
-import ShuttleBus from './components/Main/ShuttleBus';
-import MenuPlanner from './components/Main/MenuPlanner';
-import DayOff from './components/Main/DayOff';
-import UserManager from './components/Main/UserManager';
+import Main from './components/Main';
 
 function App(props) {
   const [isLogin, setIsLogin] = useState(false);
   const [mode, setMode] = useState('Login');
-  const [menu, setMenu] = useState(0);
-  const menus = [
-    'A/S',
-    'Gym',
-    'OverNight',
-    'busReservation',
-    'MenuPlanner',
-    'ShuttleBus',
-    'DayOff',
-    'User',
-  ];
+
+  useEffect(() => {
+    console.log(mode);
+  }, [mode]);
+
   function clickButton(e) {
+    // 로그인 버튼 클릭
+    e.preventDefault();
     setIsLogin(true);
-    setMode('FirstDp');
+    setMode('ManagerPage');
   }
-  function clickMenu2(e) {
-    setMode(menus[menu]);
-  }
+
+  const onChangeMode = (mode) => {
+    // 메뉴 항목 클릭
+    setMode(mode);
+  };
 
   if (!isLogin) {
     return (
       <>
-        <Header mode={mode}></Header>
-        <Login button={clickButton}></Login>
-        <Tail></Tail>
+        <Header mode={'Login'} />
+        <Login button={clickButton} />
       </>
     );
   } else {
     return (
       <div>
-        <Header mode={mode}></Header>
-        <Menu menu={clickMenu2}></Menu>
-        {/* <ManagerPage></ManagerPage> */}
-        {/* <AsRequest></AsRequest> */}
-        {/* <Gym></Gym> */}
-        {/* <OverNight></OverNight> */}
-        {/* <ShuttleManager></ShuttleManager> */}
-        {/* <ShuttleBus></ShuttleBus> */}
-        {/* <MenuPlanner></MenuPlanner> */}
-        {/* <DayOff></DayOff> */}
-        <UserManager></UserManager>
-        <Tail></Tail>
+        <Header mode={mode} />
+        <Menu onChangeMode={onChangeMode}></Menu>
+        <Main mode={mode} />
       </div>
     );
   }
