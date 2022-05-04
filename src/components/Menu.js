@@ -17,7 +17,8 @@ function Menu(props) {
   const [B2, setB2] = useState('▶ 생활관관리');
 
   function ClickMenu() {
-    const qs = document.getElementsByClassName('MenuDisappear');
+    const qs =
+      document.getElementsByClassName('MenuDisappear');
     if (qs[0].style.display === 'none') {
       qs[0].style.display = 'block';
       //qq.style.slideToggle
@@ -29,7 +30,9 @@ function Menu(props) {
   }
 
   function ClickMenu1() {
-    const qz = document.getElementsByClassName('MenuDisappear1');
+    const qz = document.getElementsByClassName(
+      'MenuDisappear1'
+    );
     console.log(qz[0].style.display);
     if (qz[0].style.display === 'none') {
       qz[0].style.display = 'block';
@@ -41,67 +44,85 @@ function Menu(props) {
   }
 
   return (
-    <div className='menu'>
+    <div className="menu">
       <p
-        className='MenuMenu'
-        onClick={() => props.onChangeMode(Object.keys(ms)[0])}
+        className="MenuMenu"
+        onClick={() =>
+          props.onChangeMode(Object.keys(ms)[0])
+        }
       >
         <strong>{ms['ManagerPage']}</strong>
       </p>
-      <p className='MenuName' onClick={ClickMenu}>
+      <p className="MenuName" onClick={ClickMenu}>
         {B1}
       </p>
-      <p className='MenuDisappear'>
+      <p className="MenuDisappear">
         <li
-          className='MenuText'
-          onClick={() => props.onChangeMode(Object.keys(ms)[1])}
+          className="MenuText"
+          onClick={() =>
+            props.onChangeMode(Object.keys(ms)[1])
+          }
         >
           {ms['AsRequest']}
         </li>
         <li
-          className='MenuText'
-          onClick={() => props.onChangeMode(Object.keys(ms)[2])}
+          className="MenuText"
+          onClick={() =>
+            props.onChangeMode(Object.keys(ms)[2])
+          }
         >
           {ms['GymReser']}
         </li>
         <li
-          className='MenuText'
-          onClick={() => props.onChangeMode(Object.keys(ms)[3])}
+          className="MenuText"
+          onClick={() =>
+            props.onChangeMode(Object.keys(ms)[3])
+          }
         >
           {ms['OverNight']}
         </li>
         <li
-          className='MenuText'
-          onClick={() => props.onChangeMode(Object.keys(ms)[4])}
+          className="MenuText"
+          onClick={() =>
+            props.onChangeMode(Object.keys(ms)[4])
+          }
         >
           {ms['ShuttleManager']}
         </li>
       </p>
-      <p className='MenuName1' onClick={ClickMenu1}>
+      <p className="MenuName1" onClick={ClickMenu1}>
         {B2}
       </p>
-      <p className='MenuDisappear1'>
+      <p className="MenuDisappear1">
         <li
-          className='MenuText'
-          onClick={() => props.onChangeMode(Object.keys(ms)[5])}
+          className="MenuText"
+          onClick={() =>
+            props.onChangeMode(Object.keys(ms)[5])
+          }
         >
           {ms['MenuPlanner']}
         </li>
         <li
-          className='MenuText'
-          onClick={() => props.onChangeMode(Object.keys(ms)[6])}
+          className="MenuText"
+          onClick={() =>
+            props.onChangeMode(Object.keys(ms)[6])
+          }
         >
           {ms['ShuttleBus']}
         </li>
         <li
-          className='MenuText'
-          onClick={() => props.onChangeMode(Object.keys(ms)[7])}
+          className="MenuText"
+          onClick={() =>
+            props.onChangeMode(Object.keys(ms)[7])
+          }
         >
           {ms['DayOff']}
         </li>
         <li
-          className='MenuText'
-          onClick={() => props.onChangeMode(Object.keys(ms)[8])}
+          className="MenuText"
+          onClick={() =>
+            props.onChangeMode(Object.keys(ms)[8])
+          }
         >
           {ms['UserManager']}
         </li>

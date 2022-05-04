@@ -2,7 +2,7 @@ import React from 'react';
 import './Css/Header.css';
 
 function Header(props) {
-  let mode = props.mode;
+  // let mode = props.mode;
   const menus = {
     Login: 'Login',
     ManagerPage: '초기 화면',
@@ -17,8 +17,8 @@ function Header(props) {
   };
 
   return (
-    <div className='header'>
-      <h1>{menus[mode]}</h1>
+    <div className="header">
+      <p>{menus[props.mode]}</p>
     </div>
   );
 }

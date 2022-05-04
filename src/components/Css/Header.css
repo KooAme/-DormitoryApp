@@ -21,4 +21,8 @@ body {
   font-size: 30pt;
   align-items: center;
   justify-content: center;
+  color: #616fb9;
+  font-size: 3rem;
+  font-weight: 100;
+  font-style: normal;
 }
