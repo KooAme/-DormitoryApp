@@ -97,6 +97,10 @@ const CustomDrawer = props => {
             onPress={() => {
               removeStdNum();
               props.setStdNum('');
+              {
+                /**Error 임시변수라서 StdNum이 앱 처음 불러와 있을 때는
+                        StdNum이 존재 x 따라서 로그아웃기능 제대로 처리되지않을 가능성  */
+              }
               props.navigation.reset({index: 0, routes: [{name: 'Home'}]});
             }}></DrawerItem>
         </Drawer.Section>
