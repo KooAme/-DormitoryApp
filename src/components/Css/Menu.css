@@ -27,18 +27,22 @@ body {
 }
 .MenuDisappear {
   cursor: pointer;
-  display: none;
-  margin: 15%;
+  margin-top: 5%;
+  max-height:0px;
+  overflow:hidden;
+  transition:all 1s;
 }
 .MenuName1 {
   cursor: pointer;
-  margin: 10%;
+  margin-left: 10%;
+  margin-top:20%;
 }
 .MenuDisappear1 {
-  display: none;
-  margin: 15%;
-  width: 15vw;
-  height: 35vh;
+  cursor: pointer;
+  margin-top: 5%;
+  max-height:0px;
+  overflow:hidden;
+  transition:all 1s;
 }
 .MenuText {
   margin-top: 10%;

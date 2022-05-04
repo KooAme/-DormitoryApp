@@ -15,28 +15,25 @@ function Menu(props) {
   };
   const [B1, setB1] = useState('▶ 예약관리');
   const [B2, setB2] = useState('▶ 생활관관리');
+  let test = document.querySelector('body');
 
   function ClickMenu() {
-    const qs = document.getElementsByClassName('MenuDisappear');
-    if (qs[0].style.display === 'none') {
-      qs[0].style.display = 'block';
-      //qq.style.slideToggle
-      setB1('▼ 예약관리');
-    } else {
-      qs[0].style.display = 'none';
-      setB1('▶ 예약관리');
+    const dis = document.querySelector(".MenuDisappear");
+    if(dis.style.maxHeight===test.clientHeight/10+"vh"){
+        dis.style.maxHeight="0px"
+    }
+    else{
+        dis.style.maxHeight=test.clientHeight/10+"vh";
     }
   }
 
   function ClickMenu1() {
-    const qz = document.getElementsByClassName('MenuDisappear1');
-    console.log(qz[0].style.display);
-    if (qz[0].style.display === 'none') {
-      qz[0].style.display = 'block';
-      setB2('▼ 생활관관리');
-    } else {
-      qz[0].style.display = 'none';
-      setB2('▶ 생활관관리');
+    const dis=document.querySelector(".MenuDisappear1");
+    if(dis.style.maxHeight===test.clientHeight/10+"vh"){
+        dis.style.maxHeight="0px"
+    }
+    else{
+        dis.style.maxHeight=test.clientHeight/10+"vh";
     }
   }
 
@@ -51,7 +48,7 @@ function Menu(props) {
       <p className='MenuName' onClick={ClickMenu}>
         {B1}
       </p>
-      <p className='MenuDisappear'>
+      <ul className='MenuDisappear'>
         <li
           className='MenuText'
           onClick={() => props.onChangeMode(Object.keys(ms)[1])}
@@ -76,11 +73,11 @@ function Menu(props) {
         >
           {ms['ShuttleManager']}
         </li>
-      </p>
+      </ul>
       <p className='MenuName1' onClick={ClickMenu1}>
         {B2}
       </p>
-      <p className='MenuDisappear1'>
+      <ul className='MenuDisappear1'>
         <li
           className='MenuText'
           onClick={() => props.onChangeMode(Object.keys(ms)[5])}
@@ -105,7 +102,7 @@ function Menu(props) {
         >
           {ms['UserManager']}
         </li>
-      </p>
+      </ul>
     </div>
   );
 }
