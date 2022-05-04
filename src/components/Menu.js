@@ -21,9 +21,11 @@ function Menu(props) {
     const dis = document.querySelector(".MenuDisappear");
     if(dis.style.maxHeight===test.clientHeight/10+"vh"){
         dis.style.maxHeight="0px"
+        setB1('▶ 예약관리')
     }
     else{
         dis.style.maxHeight=test.clientHeight/10+"vh";
+        setB1('▼ 예약관리')
     }
   }
 
@@ -31,9 +33,11 @@ function Menu(props) {
     const dis=document.querySelector(".MenuDisappear1");
     if(dis.style.maxHeight===test.clientHeight/10+"vh"){
         dis.style.maxHeight="0px"
+        setB2('▶ 생활관관리')
     }
     else{
         dis.style.maxHeight=test.clientHeight/10+"vh";
+        setB2('▼ 생활관관리')
     }
   }
 
