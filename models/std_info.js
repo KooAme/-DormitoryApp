@@ -46,6 +46,10 @@ module.exports = class User extends Sequelize.Model {
       foreignKey: 'std_id',
       sourceKey: 'std_id',
     });
+    db.StdInfo.hasMany(db.AsRequest, {
+      foreignKey: 'std_id',
+      sourceKey: 'std_id',
+    });
     db.StdInfo.hasMany(db.BusRequest, {
       foreignKey: 'std_id',
       sourceKey: 'std_id',

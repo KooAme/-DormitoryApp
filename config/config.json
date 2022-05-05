@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "mysql1234",
-    "database": "Smart_Dormitory",
+    "database": "test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

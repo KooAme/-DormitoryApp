@@ -22,7 +22,7 @@ module.exports = class User extends Sequelize.Model {
         },
         request_date: {
           type: Sequelize.DATE,
-          allowNull: false,
+          allowNull: true,
         },
         vst_date: {
           type: Sequelize.BOOLEAN,
@@ -53,6 +53,10 @@ module.exports = class User extends Sequelize.Model {
     db.AsRequest.belongsTo(db.AdmInfo, {
       foreignKey: 'adm_id',
       sourceKey: 'adm_id',
+    });
+    db.AsRequest.belongsTo(db.StdInfo, {
+      foreignKey: 'std_id',
+      sourceKey: 'std_id',
     });
   }
 };

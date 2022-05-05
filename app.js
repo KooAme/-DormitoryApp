@@ -1,12 +1,14 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
-
+const cors = require('cors');
 const { sequelize } = require('./models');
+const asRouter = require('./routes/as');
 
 const app = express();
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 3001);
 sequelize
+  // .sync({ force: true })
   .sync({ force: false })
   .then(() => {
     console.log('데이터베이스 연결 성공');
@@ -14,11 +16,13 @@ sequelize
   .catch(err => {
     console.error(err);
   });
-
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use('/as', asRouter);
 
 app.use((req, res, next) => {
   const error = new Error(
@@ -26,14 +30,6 @@ app.use((req, res, next) => {
   );
   error.status = 404;
   next(error);
-});
-
-app.use((err, req, res, next) => {
-  res.locals.message = err.message;
-  res.locals.error =
-    process.env.NODE_ENV !== 'production' ? err : {};
-  res.stats(err.status || 500);
-  res.render('error');
 });
 
 app.listen(app.get('port'), () => {
