@@ -43,6 +43,7 @@ AsRequest.create({
   adm_id: null,
 }); */
 
+//'http://localhost:3001/as' = /
 // 전체조회
 router.post("/", async (req, res, next) => {
   try {
