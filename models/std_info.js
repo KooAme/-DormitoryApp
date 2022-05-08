@@ -27,6 +27,10 @@ module.exports = class StdInfo extends Sequelize.Model {
         password: {
           type: Sequelize.STRING(45),
           allowNull: false
+        },
+        access: {
+          type: Sequelize.BOOLEAN,
+          allowNull: false
         }
       },
       {
