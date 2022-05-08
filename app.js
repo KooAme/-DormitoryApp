@@ -4,9 +4,14 @@ const morgan = require('morgan');
 const cors = require('cors');
 const { sequelize } = require('./models');
 const UserRouter = require('./routes/user');
-const AdminRouter = require('./routes/admin');
-const AsRequestRouter = require('./routes/as');
-const HlthRouter = require('./routes/hlth.js');
+const AgreeAdminRouter = require('./routes/agree');
+const AsAdminRouter = require('./routes/as');
+const BusReqAdminRouter = require('./routes/busReq');
+const BusInfoAdminRouter = require('./routes/busInfo');
+const HlthAdminRouter = require('./routes/hlth');
+const HolidayAdminRouter = require('./routes/holiday');
+const MenuAdminRouter = require('./routes/menu');
+const StayoutAdminRouter = require('./routes/stayout');
 
 const app = express();
 app.set('port', process.env.PORT || 8080);
@@ -26,10 +31,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // 라우터
-app.use('/user', UserRouter);
-app.use('/admin', AdminRouter);
-app.use('/as', AsRequestRouter);
-app.use('/hlth', HlthRouter);
+// 사용자 앱
+app.use('/user', UserRouter); // 로그인
+
+// 관리자 웹
+// 관리자 예약관리
+app.use('/admin/as', AsAdminRouter); // A/S
+app.use('/admin/hlth', HlthAdminRouter); // 헬스
+app.use('/admin/stayout', StayoutAdminRouter); // 외박
+app.use('/admin/busreq', BusReqAdminRouter); // 셔틀 버스
+
+// 관리자 생활관 관리
+app.use('/admin/menu', MenuAdminRouter); // 식단표
+app.use('/admin/businfo', BusInfoAdminRouter); // 버스 시간표
+app.use('/admin/holiday', HolidayAdminRouter); // 휴일
+app.use('/admin/agree', AgreeAdminRouter); // 사용자 회원인증
 
 app.use((req, res, next) => {
   const error = new Error(

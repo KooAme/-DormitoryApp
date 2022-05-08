@@ -1,30 +1,24 @@
 const express = require('express');
 const { Op } = require('sequelize');
-const HlthRequest = require('../models/hlth_request');
+const StayoutRequest = require('../models/stayout_request');
 const StdInfo = require('../models/std_info');
 const router = express.Router();
 
-// 헬스 예약자 관리
-//'http://localhost:3001/hlth'
+// 외박 관리
+//'http://localhost:3001/stayout'
 router.post('/', async (req, res, next) => {
   try {
     let s_Id = req.body.std_id;
     let s_Name = req.body.std_name;
-    let s_StartDate = req.body.start_ttime;
+    let s_StartDate = req.body.start_date;
     let s_EndDate = req.body.end_date;
-    let s_StartTime = req.body.start_time;
-    let s_EndTime = req.body.end_time;
     s_Id = s_Id ? s_Id : { [Op.ne]: null };
     s_Name = s_Name ? s_Name : { [Op.ne]: null };
     s_StartDate = s_StartDate
       ? s_StartDate
       : { [Op.ne]: null };
     s_EndDate = s_EndDate ? s_EndDate : { [Op.ne]: null };
-    s_StartTime = s_StartTime
-      ? s_StartTime
-      : { [Op.ne]: null };
-    s_EndTime = s_EndTime ? s_EndTime : { [Op.ne]: null };
-    const data = await HlthRequest.findAll({
+    const data = await StayoutRequest.findAll({
       include: [
         {
           model: StdInfo,
@@ -33,8 +27,8 @@ router.post('/', async (req, res, next) => {
       where: {
         std_id: s_Id,
         std_name: s_Name,
-        //req_date BETWEEN start_date AND end_date
-        //req_time BETWEEN start_time AND end_time
+        //start_date >= s_StartDate,
+        //end_date <= s_EndDate
       },
     });
     res.json(data);
