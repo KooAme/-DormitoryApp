@@ -1,6 +1,10 @@
 const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
+const cors = require("cors");
+const { sequelize, AsRequest } = require("./models");
+const SigninRouter = require("./routes/signin");
+const AsRequestRouter = require("./routes/as");
 
 const { sequelize } = require("./models");
 
@@ -20,6 +24,9 @@ app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use("/signin", SigninRouter);
+app.use("/as", AsRequest);
 
 app.use((req, res, next) => {
   const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
