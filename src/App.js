@@ -59,7 +59,11 @@ function App(props) {
           </div>
           <div style={{ margin: 5 }}>
             <label>학번 : </label>
-            <input type="text" style={{ width: 60 }} />
+            <input
+              id="std_id"
+              type="text"
+              style={{ width: 60 }}
+            />
             <label> 이름 : </label>
             <input type="text" style={{ width: 60 }} />
             <label> 상태 : </label>
