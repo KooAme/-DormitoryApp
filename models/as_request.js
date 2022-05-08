@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
-module.exports = class User extends Sequelize.Model {
+const Sequelize = require("sequelize");
+module.exports = class AsRequest extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
@@ -7,52 +7,53 @@ module.exports = class User extends Sequelize.Model {
           type: Sequelize.INTEGER,
           allowNull: false,
           primaryKey: true,
+          autoIncrement: true
         },
         title: {
           type: Sequelize.STRING(50),
-          allowNull: true,
+          allowNull: true
         },
         content: {
           type: Sequelize.TEXT,
-          allowNull: false,
+          allowNull: false
         },
         confirm: {
           type: Sequelize.BOOLEAN,
-          allowNull: false,
+          allowNull: false
         },
         request_date: {
           type: Sequelize.DATE,
-          allowNull: false,
+          allowNull: false
         },
         vst_date: {
           type: Sequelize.BOOLEAN,
-          allowNull: false,
+          allowNull: false
         },
         repair_date: {
           type: Sequelize.DATE,
-          allowNull: true,
-        },
-        std_id: {
-          type: Sequelize.INTEGER,
-          allowNull: true,
-        },
+          allowNull: true
+        }
       },
       {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: 'AsRequest',
-        tableName: 'as_request',
+        modelName: "AsRequest",
+        tableName: "as_request",
         paranoid: false,
-        charset: 'utf8mb4',
-        collate: 'utf8mb4_general_ci',
+        charset: "utf8mb4",
+        collate: "utf8mb4_general_ci"
       }
     );
   }
   static associate(db) {
     db.AsRequest.belongsTo(db.AdmInfo, {
-      foreignKey: 'adm_id',
-      sourceKey: 'adm_id',
+      foreignKey: "adm_id",
+      sourceKey: "adm_id"
+    });
+    db.AsRequest.belongsTo(db.StdInfo, {
+      foreignKey: "std_id",
+      sourceKey: "std_id"
     });
   }
 };

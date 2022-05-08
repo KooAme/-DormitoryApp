@@ -1,28 +1,20 @@
 const Sequelize = require("sequelize");
-module.exports = class BusRequest extends Sequelize.Model {
+module.exports = class Comment extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        bus_req_id: {
-          primaryKey: true,
+        comment_id: {
           type: Sequelize.INTEGER,
           allowNull: false,
-          autoIncrement: true
+          autoIncrement: true,
+          primaryKey: true
         },
-        bus_date: {
+        content: {
+          type: Sequelize.TEXT,
+          allowNull: false
+        },
+        create_date: {
           type: Sequelize.DATE,
-          allowNull: false
-        },
-        bus_way: {
-          type: Sequelize.INTEGER,
-          allowNull: false
-        },
-        bus_stop: {
-          type: Sequelize.STRING(45),
-          allowNull: false
-        },
-        bus_time: {
-          type: Sequelize.TIME,
           allowNull: false
         }
       },
@@ -30,8 +22,8 @@ module.exports = class BusRequest extends Sequelize.Model {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: "BusRequest",
-        tableName: "bus_request",
+        modelName: "Comment",
+        tableName: "comment",
         paranoid: false,
         charset: "utf8mb4",
         collate: "utf8mb4_general_ci"
@@ -39,7 +31,7 @@ module.exports = class BusRequest extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.BusRequest.belongsTo(db.StdInfo, {
+    db.Comment.belongsTo(db.StdInfo, {
       foreignKey: "std_id",
       sourceKey: "std_id"
     });
