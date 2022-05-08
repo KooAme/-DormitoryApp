@@ -15,6 +15,7 @@ import GymInquery from './src/MainScreens/GymInquery';
 import BusInquery from './src/MainScreens/BusInquery';
 import BottomTabNav from './navigation/BottomTabNav';
 import {SafeAreaView, StatusBar} from 'react-native';
+import axios from 'axios';
 
 const Drawer = createDrawerNavigator();
 
@@ -36,6 +37,10 @@ const App = () => {
   };
   useEffect(() => {
     getData();
+    axios
+      .post('http://172.21.2.3:3001/')
+      .then(res => res.data)
+      .then(data => console.log(data));
   }, [stdNum]);
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'red'}}>

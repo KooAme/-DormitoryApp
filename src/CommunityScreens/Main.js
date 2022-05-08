@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, FlatList} from 'react-native';
 import AppHeader from '../Custom/AppHeaders';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -53,7 +53,34 @@ const DATA = [
 ];
 
 function Main(props) {
-  const renderItem = ({item}) => <SetCommunityItems title={item.title} />;
+  const [noticeMode, setNoticeMode] = useState('ALL');
+  const renderItem = ({item}) => (
+    <SetCommunityItems title={item.title} navigation={props.navigation} />
+  );
+  const noticeModeChanger = mode => {
+    if (mode === 'ALL') {
+      return (
+        <Text style={{fontWeight: 'bold', fontSize: 20, marginLeft: '5%'}}>
+          전체
+        </Text>
+      );
+    } else if (mode === '공지사항') {
+      return (
+        <Text style={{fontWeight: 'bold', fontSize: 20, marginLeft: '5%'}}>
+          공지사항
+        </Text>
+      );
+    } else if (mode === 'HOT') {
+      return (
+        <View style={{flexDirection: 'row', marginLeft: '3%'}}>
+          <MaterialCommunityIcons
+            name="fire"
+            size={30}></MaterialCommunityIcons>
+          <Text style={{fontWeight: 'bold', fontSize: 20}}>HOT</Text>
+        </View>
+      );
+    }
+  };
   return (
     <>
       <AppHeader
@@ -68,9 +95,7 @@ function Main(props) {
             alignItems: 'center',
             flexDirection: 'row',
           }}>
-          <Text style={{fontWeight: 'bold', fontSize: 20, marginLeft: '5%'}}>
-            전체
-          </Text>
+          {noticeModeChanger(noticeMode)}
           {
             //state로 Mode 조정 예정
           }
@@ -90,39 +115,56 @@ function Main(props) {
           //Title and alarms and search, write
         }
       </View>
-      <View style={{flex: 1, backgroundColor: 'white'}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            height: 50,
-            borderBottomWidth: 1,
-            borderBottomColor: 'gray',
-          }}>
-          <View style={{marginLeft: '5%'}}>
-            <CustomButton
-              title="전체"
-              color="rgba(0,0,0,0)"
-              textColor="black"></CustomButton>
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+        showsVerticalScrollIndicator={false}
+        initialNumToRender={7}
+        ListHeaderComponent={
+          <View
+            style={{
+              flexDirection: 'row',
+              flex: 1,
+              borderBottomWidth: 1,
+              borderBottomColor: 'gray',
+              backgroundColor: 'white',
+            }}>
+            <View style={{marginLeft: '5%'}}>
+              <CustomButton
+                onPress={() => {
+                  setNoticeMode('ALL');
+                }}
+                title="전체"
+                color="rgba(0,0,0,0)"
+                textColor="black"></CustomButton>
+            </View>
+            <View style={{marginLeft: '5%'}}>
+              <CustomButton
+                onPress={() => {
+                  setNoticeMode('HOT');
+                }}
+                title="HOT"
+                color="rgba(0,0,0,0)"
+                textColor="black"
+                icon={() => (
+                  <MaterialCommunityIcons
+                    name="fire"
+                    size={15}></MaterialCommunityIcons>
+                )}></CustomButton>
+            </View>
+            <View style={{marginLeft: '5%'}}>
+              <CustomButton
+                onPress={() => {
+                  setNoticeMode('공지사항');
+                }}
+                title="공지사항"
+                color="rgba(0,0,0,0)"
+                textColor="black"></CustomButton>
+            </View>
           </View>
-          <View style={{marginLeft: '5%'}}>
-            <CustomButton
-              title="HOT"
-              color="rgba(0,0,0,0)"
-              textColor="black"
-              icon={() => (
-                <MaterialCommunityIcons
-                  name="fire"
-                  size={15}></MaterialCommunityIcons>
-              )}></CustomButton>
-          </View>
-        </View>
-
-        <FlatList
-          data={DATA}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-        />
-      </View>
+        }
+      />
       {/*  <View
           style={{
             flexDirection: 'row',

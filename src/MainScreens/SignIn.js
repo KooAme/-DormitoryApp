@@ -9,6 +9,7 @@ import {
 import AppHeader from '../Custom/AppHeaders';
 import CustomButton from '../Custom/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 function SignIn(props) {
   const [stdNum, setStdNum] = useState('');
@@ -22,14 +23,36 @@ function SignIn(props) {
     width: '80%',
     borderRadius: 10,
   };
-  const setData = async (key, value) => {
+  const login = () => {
+    axios
+      .post('http://192.168.0.14:3001/user/login', {
+        username: stdNum,
+        password,
+      })
+      .then(async res => {
+        try {
+          console.log(res);
+          /*  await AsyncStorage.setItem('login_info', res.data);
+          await AsyncStorage.setItem('sessionId', res.headers['set-cookie']); */
+        } catch (err) {
+          console.log(err);
+        }
+      })
+      .catch(err => console.trace(err));
+  };
+  const logout = () => {
+    axios
+      .post('http://192.168.0.14:3001/user/logout')
+      .then(res => console.log(res));
+  };
+  /*   const setData = async (key, value) => {
     try {
       await AsyncStorage.setItem(key, value);
     } catch (e) {
       // saving error
       console.log(e);
     }
-  };
+  }; */
   return (
     <>
       <AppHeader
@@ -55,10 +78,8 @@ function SignIn(props) {
           }}>
           <CustomButton
             onPress={() => {
-              setData('stdNum', stdNum);
-              props.setStdNum(stdNum);
-              console.log(stdNum);
-              props.navigation.reset({index: 0, routes: [{name: 'Home'}]});
+              login();
+              /* props.navigation.reset({index: 0, routes: [{name: 'Home'}]}); */
             }}
             title="로그인"></CustomButton>
         </View>
@@ -70,6 +91,12 @@ function SignIn(props) {
             width: '80%',
             borderTopWidth: 1,
           }}>
+          <TouchableNativeFeedback
+            onPress={() => {
+              logout();
+            }}>
+            <Text style={{marginTop: '2%'}}>로그아웃</Text>
+          </TouchableNativeFeedback>
           <TouchableNativeFeedback>
             <Text style={{marginTop: '2%'}}>비밀번호 찾기</Text>
           </TouchableNativeFeedback>

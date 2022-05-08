@@ -44,8 +44,7 @@ function Main(props) {
           <View style={grid.element}>
             <Text
               style={{
-                color: 'powderblue',
-                fontFamily: 'bold',
+                color: '#0067A3',
                 fontWeight: 'bold',
                 fontSize: 20,
               }}>
@@ -65,7 +64,6 @@ function Main(props) {
             <Text
               style={{
                 color: 'black',
-                fontFamily: 'bold',
                 fontWeight: 'bold',
                 fontSize: 20,
               }}>
@@ -85,7 +83,6 @@ function Main(props) {
             <Text
               style={{
                 color: 'orange',
-                fontFamily: 'bold',
                 fontWeight: 'bold',
                 fontSize: 20,
               }}>
@@ -105,7 +102,6 @@ function Main(props) {
             <Text
               style={{
                 color: 'navy',
-                fontFamily: 'bold',
                 fontWeight: 'bold',
                 fontSize: 20,
               }}>

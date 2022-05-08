@@ -125,7 +125,6 @@ function GymInquery(props) {
           <View style={{width: '20%'}}>
             <CustomButton
               title="조회"
-              onPress={() => alert('sex')}
               textColor="black"
               color="rgba(0, 0, 0, 0)"></CustomButton>
           </View>

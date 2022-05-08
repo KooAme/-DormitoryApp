@@ -1,40 +1,55 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const SetCommunityItems = ({title}) => (
-  <View style={styles.item}>
-    <View style={{width: '80%'}}>
-      <View style={{flexDirection: 'row'}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold', marginRight: 10}}>
-          제목입니다
-        </Text>
-        <Text style={{color: 'red'}}>(20) </Text>
-      </View>
-      <View style={{flexDirection: 'row'}}>
-        <Text style={{paddingRight: 10}}>2022-05-04</Text>
-        <Text>조회수 : 1023</Text>
-      </View>
-    </View>
+const SetCommunityItems = props => {
+  return (
     <TouchableOpacity
-      style={{
-        borderWidth: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '10%',
+      onPress={() => {
+        props.navigation.navigate('CommunityDetails');
       }}>
-      <Text>12</Text>
+      <View style={styles.item}>
+        <View style={{width: '80%'}}>
+          <View style={{flexDirection: 'row'}}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: '400',
+                marginRight: 10,
+                color: 'black',
+              }}>
+              ㅋㅋ 어제 여친 집 간 썰 품
+            </Text>
+            <Text style={{color: 'red'}}>(20) </Text>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={{paddingRight: 10}}>2022-05-04</Text>
+            <Text>조회수 : 1023</Text>
+          </View>
+        </View>
+        <TouchableOpacity
+          style={{
+            borderWidth: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '10%',
+          }}>
+          <Text>12</Text>
+        </TouchableOpacity>
+      </View>
     </TouchableOpacity>
-  </View>
-);
+  );
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   item: {
-    borderWidth: 1,
-    borderColor: 'gray',
+    borderTopWidth: 1,
+    borderColor: 'navy',
     flexDirection: 'row',
     padding: 10,
+    justifyContent: 'space-around',
+    backgroundColor: 'white',
   },
   title: {
     fontSize: 50,
