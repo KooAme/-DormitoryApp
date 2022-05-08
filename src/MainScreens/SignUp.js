@@ -11,17 +11,33 @@ function SignUp(props) {
   const [ph_num, setPh_Num] = useState();
   const [room_num, setRoom_Num] = useState();
   const [e_mail, setE_Mail] = useState();
+  var re = /^[0-9a-zA-Z]*@g\.yju\.ac\.kr/;
+
   const SignIn = () => {
     console.log(std_id, std_name, password, ph_num, room_num, e_mail);
     if (
       std_id === undefined ||
+      std_id.length != 7 ||
       std_name === undefined ||
       password === undefined ||
       ph_num === undefined ||
-      room_num === undefined ||
-      e_mail === undefined
+      ph_num.length != 11 ||
+      !re.test(e_mail) ||
+      room_num.length < 3 ||
+      room_num.length > 4 ||
+      room_num === undefined
     ) {
-      alert('형 다시 입력해요..');
+      if (!re.test(e_mail)) {
+        alert('이메일 입력 포맷을 준수해 주세요.( ex) example1@g.yju.ac.kr)');
+      } else if (ph_num != 11) {
+        alert('올바른 핸드폰 번호를 입력해주세요');
+      } else if (std_id.length != 7) {
+        alert('학번의 길이가 맞지 않습니다.');
+      } else if (room_num.length < 3 || room_num.length > 4) {
+        alert('실제 호실이 아닙니다.');
+      } else {
+        alert('어딘가 유효하지 않은 값이 있습니다!');
+      }
     } else {
       /*    axios
         .post('http://localhost:3001/user/login', {
@@ -43,7 +59,7 @@ function SignUp(props) {
     borderRadius: 3,
     borderStyle: 'solid',
     elevation: 5,
-    padding: 0,
+    padding: '1%',
     margin: 0,
   };
   return (
@@ -78,7 +94,11 @@ function SignUp(props) {
             <TextInput
               style={inputStyle}
               value={std_id}
-              onChangeText={text => setStd_Id(text)}></TextInput>
+              onChangeText={text => {
+                text = text.replace(/[^0-9]/g, '');
+                console.log(text);
+                setStd_Id(text);
+              }}></TextInput>
           </View>
           <View
             style={{
@@ -91,6 +111,14 @@ function SignUp(props) {
             <TextInput
               style={inputStyle}
               value={e_mail}
+              onEndEditing={() => {
+                re.test(e_mail)
+                  ? alert('굿')
+                  : (() => {
+                      inputStyle.borderColor = 'blue';
+                      console.log(inputStyle);
+                    })();
+              }}
               onChangeText={text => setE_Mail(text)}></TextInput>
           </View>
           <View
@@ -104,7 +132,9 @@ function SignUp(props) {
             <TextInput
               style={inputStyle}
               value={password}
-              onChangeText={text => setPassword(text)}></TextInput>
+              onChangeText={text => {
+                setPassword(text);
+              }}></TextInput>
           </View>
           <View
             style={{
@@ -117,7 +147,11 @@ function SignUp(props) {
             <TextInput
               style={inputStyle}
               value={room_num}
-              onChangeText={text => setRoom_Num(text)}></TextInput>
+              keyboardType="number-pad"
+              onChangeText={text => {
+                text = text.replace(/[^0-9]/g, '');
+                setRoom_Num(text);
+              }}></TextInput>
           </View>
           <View
             style={{
@@ -130,7 +164,11 @@ function SignUp(props) {
             <TextInput
               style={inputStyle}
               value={ph_num}
-              onChangeText={text => setPh_Num(text)}></TextInput>
+              keyboardType="numeric"
+              onChangeText={text => {
+                text = text.replace(/[^0-9]/g, '');
+                setPh_Num(text);
+              }}></TextInput>
           </View>
         </View>
       </KeyboardAwareScrollView>
@@ -141,7 +179,7 @@ function SignUp(props) {
           justifyContent: 'center',
           marginBottom: '10%',
         }}>
-        <View style={{width: '80%', height: '100%'}}>
+        <View style={{width: '80%', height: '50%'}}>
           <CustomButton
             title="회원가입"
             onPress={() => SignIn()}></CustomButton>
