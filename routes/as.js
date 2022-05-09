@@ -5,16 +5,19 @@ const StdInfo = require('../models/std_info');
 const router = express.Router();
 
 // 전체조회
+//'http://localhost:3001/as/request' = /
 router.post('/', async (req, res, next) => {
   try {
     let Id = req.body.std_id;
+    Id = '';
     let Name = req.body.std_name;
+    Name = 'qqqqqq';
     // let StartDate = '2020-05-05'; // 검색 시작 날
     let StartDate = req.body.start_date; //   검색  날
     let EndDate = req.body.end_date; //   검색   날
     Id = Id || { [Op.ne]: null };
     Name = Name || { [Op.ne]: null };
-    StartDate = StartDate || Date.now();
+    StartDate = StartDate || '2000-01-01';
     EndDate = EndDate || Date.now();
     /* const data = await AsRequest.findAll({
       include: [
@@ -28,16 +31,14 @@ router.post('/', async (req, res, next) => {
       },
     }); */
     const data = await AsRequest.findAll({
-      include: [
-        {
-          model: StdInfo,
-        },
-      ],
-      /* where: {
+      include: [{ model: StdInfo }],
+      where: {
+        std_id: '123121',
+        std_name: 'wwwww',
         request_date: {
-          [Op.between]: [StartDate, EndDate],
+          [Op.between]: ['2020-01-01', '2022-12-12'],
         },
-      }, */
+      },
     });
     res.json(data);
   } catch (err) {

@@ -17,7 +17,7 @@ const SetDataList = props => {
         <td>{data.StdInfo.room_num}</td>
         <td>{data.title}</td>
         <td>{data.StdInfo.ph_num}</td>
-        <td>{data.createdAt}</td>
+        <td>{data.request_date}</td>
         <td>{data.confirm}</td>
         <td>
           <input type="checkbox" />
