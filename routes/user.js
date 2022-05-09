@@ -1,7 +1,6 @@
 const express = require('express');
 const StdInfo = require('../models/std_info');
-const AdmInfo = require('../models/adm_info');
-const { where } = require('sequelize/types');
+// const AdmInfo = require('../models/adm_info');
 const router = express.Router();
 
 //'http://localhost:3001/user' = /
@@ -51,7 +50,7 @@ router.post('/signin', async (req, res, next) => {
       ph_num: account.ph_num,
       room_num: account.room_num,
       e_mail: account.e_mail,
-      access: false, // 관리자가 권환을 줘야지 true
+      // access: false, defaultValue로 자동으로 들어감
     });
     console.log('회원가입 완료');
     console.log(account);

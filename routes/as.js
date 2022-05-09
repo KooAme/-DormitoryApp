@@ -5,19 +5,18 @@ const StdInfo = require('../models/std_info');
 const router = express.Router();
 
 // A/S 신청자 관리
-//'http://localhost:3001/as'
+//'http://localhost:3001/admin/as'
+// 조회
 router.post('/', async (req, res, next) => {
   try {
-    let s_Id = req.body.std_id;
-    let s_Name = req.body.std_name;
-    let s_StartDate = req.body.start_date;
-    let s_EndDate = req.body.end_date;
-    s_Id = s_Id ? s_Id : { [Op.ne]: null };
-    s_Name = s_Name ? s_Name : { [Op.ne]: null };
-    s_StartDate = s_StartDate
-      ? s_StartDate
-      : { [Op.ne]: null };
-    s_EndDate = s_EndDate ? s_EndDate : { [Op.ne]: null };
+    let Id = req.body.std_id;
+    let Name = req.body.std_name;
+    let StartDate = req.body.start_date;
+    let EndDate = req.body.end_date;
+    Id = Id || { [Op.ne]: null };
+    Name = Name || { [Op.ne]: null };
+    StartDate = StartDate || { [Op.ne]: null };
+    EndDate = EndDate || { [Op.ne]: null };
     const data = await AsRequest.findAll({
       include: [
         {
@@ -25,10 +24,11 @@ router.post('/', async (req, res, next) => {
         },
       ],
       where: {
-        std_id: s_Id,
-        std_name: s_Name,
-        s_StartDate: s_StartDate,
-        s_EndDate: s_EndDate,
+        std_id: Id,
+        std_name: Name,
+        request_date: {
+          [Op.between]: [{ StartDate }, { EndDate }],
+        },
       },
     });
     res.json(data);
@@ -37,5 +37,35 @@ router.post('/', async (req, res, next) => {
     next(err);
   }
 });
-
+// 상태 처리
+router.put('/', async (req, res, next) => {
+  try {
+    let Id = req.body.std_id;
+    let Name = req.body.std_name;
+    let StartDate = req.body.start_date;
+    let EndDate = req.body.end_date;
+    Id = Id || { [Op.ne]: null };
+    Name = Name || { [Op.ne]: null };
+    StartDate = StartDate || { [Op.ne]: null };
+    EndDate = EndDate || { [Op.ne]: null };
+    const data = await AsRequest.findAll({
+      include: [
+        {
+          model: StdInfo,
+        },
+      ],
+      where: {
+        std_id: Id,
+        std_name: Name,
+        request_date: {
+          [Op.between]: [{ StartDate }, { EndDate }],
+        },
+      },
+    });
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
 module.exports = router;
