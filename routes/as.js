@@ -9,9 +9,7 @@ const router = express.Router();
 router.post('/', async (req, res, next) => {
   try {
     let Id = req.body.std_id;
-    Id = '';
     let Name = req.body.std_name;
-    Name = 'qqqqqq';
     // let StartDate = '2020-05-05'; // 검색 시작 날
     let StartDate = req.body.start_date; //   검색  날
     let EndDate = req.body.end_date; //   검색   날
@@ -19,22 +17,18 @@ router.post('/', async (req, res, next) => {
     Name = Name || { [Op.ne]: null };
     StartDate = StartDate || '2000-01-01';
     EndDate = EndDate || Date.now();
-    /* const data = await AsRequest.findAll({
+    const data = await AsRequest.findAll({
       include: [
         {
           model: StdInfo,
+          // required: false,
+          where: {
+            std_id: Id,
+            std_name: Name,
+          },
         },
       ],
       where: {
-        std_id: '1801149',
-        // std_name: s_Name, 이거 빼면 잘됨;
-      },
-    }); */
-    const data = await AsRequest.findAll({
-      include: [{ model: StdInfo }],
-      where: {
-        std_id: '123121',
-        std_name: 'wwwww',
         request_date: {
           [Op.between]: ['2020-01-01', '2022-12-12'],
         },
