@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-module.exports = class User extends Sequelize.Model {
+module.exports = class adm_info extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
@@ -34,7 +34,7 @@ module.exports = class User extends Sequelize.Model {
       foreignKey: 'adm_id',
       sourceKey: 'adm_id',
     });
-    db.AdmInfo.hasMany(db.FoodList, {
+    db.AdmInfo.hasMany(db.MenuList, {
       foreignKey: 'adm_id',
       sourceKey: 'adm_id',
     });

@@ -1,66 +1,74 @@
-const Sequelize = require('sequelize');
-module.exports = class User extends Sequelize.Model {
+const Sequelize = require("sequelize");
+module.exports = class StdInfo extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
         std_id: {
           primaryKey: true,
           type: Sequelize.INTEGER,
-          allowNull: false,
+          allowNull: false
         },
         std_name: {
           type: Sequelize.STRING(30),
-          allowNull: false,
+          allowNull: false
         },
         ph_num: {
           type: Sequelize.STRING(30),
-          allowNull: false,
+          allowNull: false
         },
         room_num: {
           type: Sequelize.INTEGER,
-          allowNull: true,
+          allowNull: true
         },
         e_mail: {
           type: Sequelize.STRING(45),
-          allowNull: false,
+          allowNull: false
         },
         password: {
           type: Sequelize.STRING(45),
-          allowNull: false,
+          allowNull: false
         },
+        access: {
+          type: Sequelize.BOOLEAN,
+          allowNull: false
+        }
       },
       {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: 'StdInfo',
-        tableName: 'std_info',
+        modelName: "StdInfo",
+        tableName: "std_info",
         paranoid: false,
-        charset: 'utf8mb4',
-        collate: 'utf8mb4_general_ci',
+        charset: "utf8mb4",
+        collate: "utf8mb4_general_ci"
       }
     );
   }
   static associate(db) {
     db.StdInfo.hasMany(db.BusInfo, {
-      foreignKey: 'std_id',
-      sourceKey: 'std_id',
-    });
-    db.StdInfo.hasMany(db.AsRequest, {
-      foreignKey: 'std_id',
-      sourceKey: 'std_id',
+      foreignKey: "std_id",
+      sourceKey: "std_id"
     });
     db.StdInfo.hasMany(db.BusRequest, {
-      foreignKey: 'std_id',
-      sourceKey: 'std_id',
+      foreignKey: "std_id",
+      sourceKey: "std_id"
+    });
+    db.StdInfo.hasMany(db.Bulletin, {
+      foreignKey: "std_id",
+      sourceKey: "std_id"
+    });
+    db.StdInfo.hasMany(db.Comment, {
+      foreignKey: "std_id",
+      sourceKey: "std_id"
     });
     db.StdInfo.hasMany(db.HlthRequest, {
-      foreignKey: 'std_id',
-      sourceKey: 'std_id',
+      foreignKey: "std_id",
+      sourceKey: "std_id"
     });
     db.StdInfo.hasMany(db.StayoutRequest, {
-      foreignKey: 'std_id',
-      sourceKey: 'std_id',
+      foreignKey: "std_id",
+      sourceKey: "std_id"
     });
   }
 };

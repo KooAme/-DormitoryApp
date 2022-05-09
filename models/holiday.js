@@ -1,13 +1,14 @@
 const Sequelize = require('sequelize');
-module.exports = class User extends Sequelize.Model {
+module.exports = class Holiday extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        /* id: {
+        holiday_id: {
           primaryKey: true,
           type: Sequelize.INTEGER,
           allowNull: false,
-        }, */
+          autoIncrement: true,
+        },
         date: {
           type: Sequelize.DATE,
           allowNull: false,
