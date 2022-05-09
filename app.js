@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const { sequelize } = require('./models');
 const asRouter = require('./routes/as');
+const signinRouter = require('./routes/signin');
 
 const app = express();
 app.set('port', process.env.PORT || 3001);
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/as', asRouter);
+app.use('/signin', signinRouter);
 
 app.use((req, res, next) => {
   const error = new Error(
