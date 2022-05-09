@@ -33,11 +33,11 @@ router.post('/', async (req, res, next) => {
           model: StdInfo,
         },
       ],
-      where: {
+      /* where: {
         request_date: {
           [Op.between]: [StartDate, EndDate],
         },
-      },
+      }, */
     });
     res.json(data);
   } catch (err) {

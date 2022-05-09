@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/as', asRouter);
+app.use('/as/request', asRouter);
 app.use('/signin', signinRouter);
 
 app.use((req, res, next) => {
