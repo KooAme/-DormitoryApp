@@ -3,6 +3,8 @@ import React from 'react';
 const SetDataList = props => {
   console.log(props.data);
   const renderData = props.data.map((data, index = 1) => {
+    let confirm = data.confirm;
+    confirm = confirm ? 'cc' : '처리';
     return (
       <tr
         key={index++}
@@ -18,7 +20,7 @@ const SetDataList = props => {
         <td>{data.title}</td>
         <td>{data.StdInfo.ph_num}</td>
         <td>{data.request_date}</td>
-        <td>{data.confirm}</td>
+        <td>{confirm}</td>
         <td>
           <input type="checkbox" />
         </td>
