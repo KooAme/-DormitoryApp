@@ -7,26 +7,33 @@ const router = express.Router();
 //'http://localhost:3001/busreq'
 router.put('/', async (req, res, next) => {
   try {
-    let s_Id = req.body.std_id;
-    let s_Name = req.body.std_name;
-    let s_BusStop = req.body.bus_stop;
-    let s_BusDate = req.body.bus_date;
-    s_Id = s_Id ? s_Id : { [Op.ne]: null };
-    s_Name = s_Name ? s_Name : { [Op.ne]: null };
-    s_BusStop = s_BusStop ? s_BusStop : { [Op.ne]: null };
-    s_BusDate = s_BusDate ? s_BusDate : { [Op.ne]: null };
+    let Id = req.body.std_id;
+    let Name = req.body.std_name;
+    let BusStop = req.body.bus_stop;
+    let BusDate = req.body.bus_date;
+    let BusWay = req.body.bus_way;
+    Id = Id || { [Op.ne]: null };
+    Name = Name || { [Op.ne]: null };
+    BusStop = BusStop || { [Op.ne]: null };
+    BusDate = BusDate || { [Op.ne]: null };
+    BusWay = BusWay || { [Op.ne]: null };
 
     const data = await BusRequest.findAll({
       include: [
         {
           model: StdInfo,
+          where: {
+            std_id: Id,
+            std_name: Name,
+          },
         },
       ],
       where: {
-        std_id: s_Id,
-        std_name: std_name,
-        bus_date: s_BusDate,
-        bus_stop: s_BusStop,
+        bus_date: {
+          [Op.between]: [StartDate, EndDate],
+        },
+        bus_stop: BusStop,
+        bus_way: BusWay,
       },
     });
     res.json(data);
@@ -35,3 +42,4 @@ router.put('/', async (req, res, next) => {
     next(err);
   }
 });
+module.exports = router;

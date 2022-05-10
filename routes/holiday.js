@@ -1,31 +1,65 @@
 const express = require('express');
-const StdInfo = require('../models/std_info');
 const Holiday = require('../models/holiday');
 const router = express.Router();
 
 // 휴일 관리
 //'http://localhost:3001/holiday'
-router.put('/', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
+    let Name = req.body.name;
+    let Date = req.body.date;
+    Name = Name || { [Op.ne]: null };
+    Date = Date || { [Op.ne]: null };
     // 아래 임시 코드
-    let s_name = req.body.name;
-    let s_date = req.body.date;
-    s_name = s_name ? s_name : { [Op.ne]: null };
-    s_date = s_date ? s_date : { [Op.ne]: null };
     const data = await Holiday.findAll({
-      include: [
-        {
-          model: StdInfo,
-        },
-      ],
       where: {
-        name: s_name,
-        date: s_date,
+        name: Name,
+        date: Date,
       },
     });
+    res.send('휴일 관리/조회');
     res.json(data);
   } catch (err) {
     console.error(err);
     next(err);
   }
 });
+
+//'http://localhost:3001/holiday/add'
+router.post('/add', async (req, res, next) => {
+  try {
+    // 아래 임시 코드
+    let Name = req.body.name;
+    let Date = req.body.date;
+    const data = await Holiday.create({
+      name: Name,
+      date: Date,
+    });
+    re.send('휴일 관리/추가');
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+//'http://localhost:3001/holiday'
+router.delete('/', async (req, res, next) => {
+  try {
+    // 아래 임시 코드
+    let Name = req.body.name;
+    let Date = req.body.date;
+    Holiday.destroy({
+      where: {
+        name: Name,
+        date: Date,
+      },
+    });
+    re.send('휴일 관리/제거');
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+module.exports = router;
