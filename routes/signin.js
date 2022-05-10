@@ -13,6 +13,16 @@ router.post('/', async (req, res, next) => {
       room_num: req.body.room_num,
       e_mail: req.body.e_mail,
     });
+    /* StdInfo.update(
+      {
+        std_name: 'dsafasdf',
+      },
+      {
+        where: {
+          std_id: 14,
+        },
+      }
+    ); */
     console.log(req.body);
   } catch (err) {
     console.error(err);

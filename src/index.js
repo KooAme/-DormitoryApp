@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './AppAS';
-// import App from './AppSignin';
+// import App from './AppAS';
+import App from './AppSignin';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root')

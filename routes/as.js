@@ -32,6 +32,7 @@ router.post('/', async (req, res, next) => {
           [Op.between]: [StartDate, EndDate],
         },
       },
+      order: [['createdAt', 'DESC']],
     });
     res.json(data);
   } catch (err) {
@@ -39,5 +40,18 @@ router.post('/', async (req, res, next) => {
     next(err);
   }
 });
-
+router.delete('/', async (req, res, next) => {
+  try {
+    let Id = 2;
+    const data = await AsRequest.destroy({
+      where: {
+        as_id: Id,
+      },
+    });
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
 module.exports = router;
