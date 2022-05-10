@@ -15,7 +15,7 @@ router.put('/', async (req, res, next) => {
       },
       { where: { std_id: checkedStd } }
     );
-    console.log('회원 권한을 줌');
+    res.send('회원 권한을 줌');
   } catch (err) {
     console.error(err);
     next(err);

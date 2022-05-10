@@ -20,10 +20,12 @@ module.exports = class AsRequest extends Sequelize.Model {
         confirm: {
           type: Sequelize.BOOLEAN,
           allowNull: false,
+          defaultValue: false,
         },
         request_date: {
           type: Sequelize.DATE,
           allowNull: false,
+          defaultValue: new Date(),
         },
         vst_date: {
           type: Sequelize.BOOLEAN,

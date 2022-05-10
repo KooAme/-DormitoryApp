@@ -1,4 +1,5 @@
 const express = require('express');
+const { Op } = require('sequelize');
 const BusInfo = require('../models/bus_info');
 const router = express.Router();
 
@@ -9,23 +10,21 @@ router.put('/', async (req, res, next) => {
   try {
     // bus_info, UI 조정 필요할것 같음
     // 아래 임시 코드
-    let s_Type = req.body.type;
-    let s_BusWay = req.body.bus_way;
-    let s_Time = req.body.time;
-    let s_busStop = req.body.bus_stop;
-    s_Type = s_Type ? s_Type : { [Op.ne]: null };
-    s_BusWay = s_BusWay ? s_BusWay : { [Op.ne]: null };
-    s_Time = s_Time ? s_Time : { [Op.ne]: null };
-    s_bustStop = s_bustStop
-      ? s_bustStop
-      : { [Op.ne]: null };
+    let Type = req.body.type;
+    let BusWay = req.body.bus_way;
+    let Time = req.body.time;
+    let BusStop = req.body.bus_stop;
+    Type = Type || { [Op.ne]: null };
+    BusWay = BusWay || { [Op.ne]: null };
+    Time = Time || { [Op.ne]: null };
+    BusStop = BusStop || { [Op.ne]: null };
 
     const data = await BusInfo.findAll({
       where: {
-        type: s_Type,
-        bus_way: s_BusWay,
-        time: s_Time,
-        bus_stop: s_busStop,
+        type: Type,
+        bus_way: BusWay,
+        time: Time,
+        bus_stop: BusStop,
       },
     });
     res.json(data);

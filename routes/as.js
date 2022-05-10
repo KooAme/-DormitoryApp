@@ -15,7 +15,7 @@ router.post('/', async (req, res, next) => {
     Id = Id || { [Op.ne]: null };
     Name = Name || { [Op.ne]: null };
     StartDate = StartDate || '1970-01-01';
-    EndDate = EndDate || '2023-01-01';
+    EndDate = EndDate || new Date();
     const data = await AsRequest.findAll({
       include: [
         {

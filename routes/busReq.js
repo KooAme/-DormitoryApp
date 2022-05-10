@@ -1,5 +1,6 @@
 const express = require('express');
-const { StdInfo } = require('../models');
+const { Op } = require('sequelize');
+const StdInfo = require('../models/std_info');
 const BusRequest = require('../models/bus_request');
 const router = express.Router();
 
@@ -29,9 +30,7 @@ router.put('/', async (req, res, next) => {
         },
       ],
       where: {
-        bus_date: {
-          [Op.between]: [StartDate, EndDate],
-        },
+        bus_date: BusDate,
         bus_stop: BusStop,
         bus_way: BusWay,
       },

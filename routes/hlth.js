@@ -17,8 +17,6 @@ router.post('/', async (req, res, next) => {
     Name = Name || { [Op.ne]: null };
     StartDate = StartDate || { [Op.ne]: null };
     EndDate = EndDate || { [Op.ne]: null };
-    StartTime = StartTime || { [Op.ne]: null };
-    EndTime = EndTime || { [Op.ne]: null };
     Time = Time || { [Op.ne]: null };
     const data = await HlthRequest.findAll({
       include: [
