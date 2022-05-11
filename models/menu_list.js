@@ -1,12 +1,13 @@
 const Sequelize = require('sequelize');
-module.exports = class FoodList extends Sequelize.Model {
+module.exports = class MenuList extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        food_id: {
+        menu_id: {
           primaryKey: true,
           type: Sequelize.INTEGER,
           allowNull: false,
+          autoIncrement: true,
         },
         date: {
           type: Sequelize.DATE,
@@ -25,8 +26,8 @@ module.exports = class FoodList extends Sequelize.Model {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: 'FoodList',
-        tableName: 'food_list',
+        modelName: 'MenuList',
+        tableName: 'menu_list',
         paranoid: false,
         charset: 'utf8mb4',
         collate: 'utf8mb4_general_ci',
@@ -34,7 +35,7 @@ module.exports = class FoodList extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.FoodList.belongsTo(db.AdmInfo, {
+    db.MenuList.belongsTo(db.AdmInfo, {
       foreignKey: 'adm_id',
       sourceKey: 'adm_id',
     });

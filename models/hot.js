@@ -1,18 +1,13 @@
 const Sequelize = require('sequelize');
-module.exports = class User extends Sequelize.Model {
+module.exports = class Hot extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        /* id: {
-          primaryKey: true,
-          type: Sequelize.INTEGER,
-          allowNull: false,
-        }, */
         hot_id: {
           type: Sequelize.INTEGER,
           allowNull: false,
-          unique:true,
           autoIncrement:true,
+          primaryKey:true,
         }
       },
       {
@@ -28,7 +23,7 @@ module.exports = class User extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.Holiday.belongsTo(db.AdmInfo, {
+    db.Hot.belongsTo(db.Bulletin, {
       foreignKey: 'bulletin_id',
       sourceKey: 'bulletin_id',
     });

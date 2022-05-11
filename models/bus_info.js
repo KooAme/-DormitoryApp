@@ -1,18 +1,19 @@
 const Sequelize = require('sequelize');
-module.exports = class User extends Sequelize.Model {
+module.exports = class BusInfo extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
         bus_id: {
-          primaryKey: true,
           type: Sequelize.INTEGER,
           allowNull: false,
+          primaryKey: true,
+          autoIncrement: true,
         },
         type: {
           type: Sequelize.STRING(30),
           allowNull: false,
         },
-        stop_stop: {
+        bus_stop: {
           type: Sequelize.STRING(30),
           allowNull: false,
         },
