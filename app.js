@@ -1,13 +1,16 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
-
 const { sequelize } = require('./models');
+const cors = require('cors');
+const asReqRouter = require('./routes/asRequest');
+const bulletRouter = require('./routes/bulletin');
+const hlthReqRouter = require('./routes/hlthRequest');
 
 const app = express();
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 3001);
 sequelize
-  .sync({ force: false })
+  .sync({ force: !true })
   .then(() => {
     console.log('데이터베이스 연결 성공');
   })
@@ -15,10 +18,16 @@ sequelize
     console.error(err);
   });
 
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use('/bulletin', bulletRouter);
+app.use('/as', asReqRouter);
+app.use('/hlth', hlthReqRouter);
+
 
 app.use((req, res, next) => {
   const error = new Error(
@@ -32,7 +41,7 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error =
     process.env.NODE_ENV !== 'production' ? err : {};
-  res.stats(err.status || 500);
+  res.status(err.status || 500);
   res.render('error');
 });
 

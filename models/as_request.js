@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-module.exports = class User extends Sequelize.Model {
+module.exports = class AsRequest extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
@@ -7,6 +7,7 @@ module.exports = class User extends Sequelize.Model {
           type: Sequelize.INTEGER,
           allowNull: false,
           primaryKey: true,
+          autoIncrement: true,
         },
         title: {
           type: Sequelize.STRING(50),
@@ -32,10 +33,6 @@ module.exports = class User extends Sequelize.Model {
           type: Sequelize.DATE,
           allowNull: true,
         },
-        std_id: {
-          type: Sequelize.INTEGER,
-          allowNull: true,
-        },
       },
       {
         sequelize,
@@ -53,6 +50,10 @@ module.exports = class User extends Sequelize.Model {
     db.AsRequest.belongsTo(db.AdmInfo, {
       foreignKey: 'adm_id',
       sourceKey: 'adm_id',
+    });
+    db.AsRequest.belongsTo(db.StdInfo, {
+      foreignKey: 'std_id',
+      sourceKey: 'std_id',
     });
   }
 };

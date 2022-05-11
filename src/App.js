@@ -1,9 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Menu from './components/Menu';
-import Login from './components/Login';
-import Header from './components/Header';
-import Main from './components/Main';
+import SetBulletin from './SetBulletin';
 
 function App(props) {
   const [isLogin, setIsLogin] = useState(false);

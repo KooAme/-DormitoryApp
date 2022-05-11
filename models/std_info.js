@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-module.exports = class User extends Sequelize.Model {
+module.exports = class StdInfo extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
@@ -28,6 +28,11 @@ module.exports = class User extends Sequelize.Model {
           type: Sequelize.STRING(45),
           allowNull: false,
         },
+        access: {
+          type: Sequelize.BOOLEAN,
+          allowNull: false,
+          defaultValue: false,
+        },
       },
       {
         sequelize,
@@ -47,6 +52,14 @@ module.exports = class User extends Sequelize.Model {
       sourceKey: 'std_id',
     });
     db.StdInfo.hasMany(db.BusRequest, {
+      foreignKey: 'std_id',
+      sourceKey: 'std_id',
+    });
+    db.StdInfo.hasMany(db.Bulletin, {
+      foreignKey: 'std_id',
+      sourceKey: 'std_id',
+    });
+    db.StdInfo.hasMany(db.Comment, {
       foreignKey: 'std_id',
       sourceKey: 'std_id',
     });
