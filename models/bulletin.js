@@ -1,4 +1,4 @@
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize');
 module.exports = class Bulletin extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
@@ -7,45 +7,49 @@ module.exports = class Bulletin extends Sequelize.Model {
           type: Sequelize.INTEGER,
           allowNull: false,
           autoIncrement: true,
-          primaryKey: true
+          primaryKey: true,
         },
         title: {
           type: Sequelize.STRING(45),
-          allowNull: false
+          allowNull: false,
         },
         content: {
           type: Sequelize.TEXT,
-          allowNull: false
+          allowNull: false,
         },
         views: {
           type: Sequelize.INTEGER,
-          allowNull: false
+          allowNull: false,
         },
         hot: {
           type: Sequelize.INTEGER,
-          allowNull: false
+          allowNull: false,
         },
         create_date: {
           type: Sequelize.DATE,
-          allowNull: false
-        }
+          allowNull: false,
+        },
       },
       {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: "Bulletin",
-        tableName: "bulletin",
+        modelName: 'Bulletin',
+        tableName: 'bulletin',
         paranoid: false,
-        charset: "utf8mb4",
-        collate: "utf8mb4_general_ci"
+        charset: 'utf8mb4',
+        collate: 'utf8mb4_general_ci',
       }
     );
   }
   static associate(db) {
     db.Bulletin.belongsTo(db.StdInfo, {
-      foreignKey: "std_id",
-      sourceKey: "std_id"
+      foreignKey: 'std_id',
+      sourceKey: 'std_id',
+    });
+    db.Bulletin.hasMany(db.Comment, {
+      foreignKey: 'bulletin_id',
+      sourceKey: 'bulletin_id',
     });
   }
 };
