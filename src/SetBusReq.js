@@ -2,30 +2,31 @@ import axios from 'axios';
 import React, { useEffect, useState }from 'react';
 
 function App(props) {
-
-  function confirm(e) {
+  const [date, setDate] = useState();
+  const [way, setWay] = useState();
+  const [ride, setRide] = useState();
+  const [time, setTime] = useState();
+  function confirmR(e) {
     e.preventDefault();
+    axios.post('http://localhost:3001/bus/ride', {
+      date, way, ride, time
+    })
     console.log(
-      title, content, allow
+      date, way, time, ride
     );
-
-    axios.post('http://localhost:3001/bus/request', {
-      title, content, allow
-    });
   };
-
-  function checkClick(e) {
-    if(allow) {
-      setAllow(false);
-    } else {
-      setAllow(true);
-    }
-    console.log(allow);
-  }
-
-  return (
+  function confirmD(e) {
+    e.preventDefault();
+    axios.porst('http://localhost:3001/bus/time', {
+      date, way
+    })
+    console.log(
+      date, way
+    );
+  };
+  return(
     <>
-      <h1>AS신청</h1>
+      <h1>버스 신청</h1>
       <form
         className=""
         onSubmit={e => {
@@ -79,7 +80,6 @@ function App(props) {
       </form>
     </>
   )
-
 };
 
 export default App;
