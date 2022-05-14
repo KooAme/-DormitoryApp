@@ -6,6 +6,7 @@ const cors = require('cors');
 const asReqRouter = require('./routes/asRequest');
 const bulletRouter = require('./routes/bulletin');
 const hlthReqRouter = require('./routes/hlthRequest');
+const stayoutReqRouter = require('./routes/stayout')
 
 const app = express();
 app.set('port', process.env.PORT || 3001);
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/bulletin', bulletRouter);
 app.use('/as', asReqRouter);
 app.use('/hlth', hlthReqRouter);
+app.use('/stayout', stayoutReqRouter);
 
 
 app.use((req, res, next) => {
