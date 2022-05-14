@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom/client';
 // import App from './SetBulletin';
 // import App from './SetHlth';
 // import App from './SetAsReq';
-import App from './SetStayoutReq'
+// import App from './SetStayoutReq';
+// import App from './SetAsUpdate';
+// import App from './SetSignin';
+import App from './HashInput';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'));

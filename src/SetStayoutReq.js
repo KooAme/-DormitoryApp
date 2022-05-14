@@ -4,15 +4,15 @@ import React, { useEffect, useState }from 'react';
 function SetHlth(props) {
   const [sDate, setSDate] = useState();
   const [eDate, setEDate] = useState();
-  const today = (date) => date.toISOString().slice(0,10);
-  const day = today(new Date());
+  const setToday = (date) => date.toISOString().slice(0,10);
+  const today = setToday(new Date());
   
   function confirm(e) {
     e.preventDefault();
     console.log(
       sDate, eDate
     );
-    if(sDate > eDate || sDate < day) {
+    if(sDate > eDate || sDate < today) {
       alert('올바르지 않은 날짜입니다.');
     } else {
       axios.post('http://localhost:3001/stayout/request', {

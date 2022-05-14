@@ -3,12 +3,15 @@ const path = require('path');
 const morgan = require('morgan');
 const { sequelize } = require('./models');
 const cors = require('cors');
-const asReqRouter = require('./routes/asRequest');
+const asReqRouter = require('./routes/asUpdate');
 const bulletRouter = require('./routes/bulletin');
 const hlthReqRouter = require('./routes/hlthRequest');
 const stayoutReqRouter = require('./routes/stayout')
+const signinRouter = require('./routes/Signin');
+const hashRouter = require('./routes/Hash');
 
 const app = express();
+
 app.set('port', process.env.PORT || 3001);
 sequelize
   .sync({ force: !true })
@@ -29,7 +32,8 @@ app.use('/bulletin', bulletRouter);
 app.use('/as', asReqRouter);
 app.use('/hlth', hlthReqRouter);
 app.use('/stayout', stayoutReqRouter);
-
+app.use('/signin', signinRouter);
+app.use('/signin/hash', hashRouter);
 
 app.use((req, res, next) => {
   const error = new Error(
@@ -39,13 +43,13 @@ app.use((req, res, next) => {
   next(error);
 });
 
-app.use((err, req, res, next) => {
-  res.locals.message = err.message;
-  res.locals.error =
-    process.env.NODE_ENV !== 'production' ? err : {};
-  res.status(err.status || 500);
-  res.render('error');
-});
+// app.use((err, req, res, next) => {
+//   res.locals.message = err.message;
+//   res.locals.error =
+//     process.env.NODE_ENV !== 'production' ? err : {};
+//   res.status(err.status || 500);
+//   res.render('error');
+// });
 
 app.listen(app.get('port'), () => {
   console.log(app.get('port'), '번 포트에서 대기 중');

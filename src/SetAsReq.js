@@ -5,6 +5,7 @@ function App(props) {
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
   const [allow, setAllow] = useState(false);
+  const [data, setData] = useState();
   function confirm(e) {
     e.preventDefault();
     console.log(
