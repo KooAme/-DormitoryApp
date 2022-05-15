@@ -5,7 +5,7 @@ const router = express.Router();
 
 //'http://localhost:3001/user' = /
 
-// 로그인
+// 모바일 로그인
 //'http://localhost:3001/user/login'
 router.post('/login', async (req, res, next) => {
   try {
@@ -37,30 +37,7 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
-// 회원가입
-//'http://localhost:3001/user/signin'
-router.post('/signin', async (req, res, next) => {
-  try {
-    // 회원가입 창에서 입력한대로 StdInfo에 Insert
-    const account = req.body;
-    StdInfo.create({
-      std_id: account.std_id,
-      std_name: account.std_name,
-      password: account.password,
-      ph_num: account.ph_num,
-      room_num: account.room_num,
-      e_mail: account.e_mail,
-      // access: false, defaultValue로 자동으로 들어감
-    });
-    console.log('회원가입 완료');
-    console.log(account);
-  } catch (err) {
-    console.error(err);
-    next(err);
-  }
-});
-
-//비밀번호 찾기
+// 모바일 비밀번호 찾기
 router.post('/find/pw', async (req, res, next) => {
   try {
     // 학번, 나이 입력후 본인확인이 가능한 것(문자인증, 이메일인증) 으로

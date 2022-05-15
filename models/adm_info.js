@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-module.exports = class adm_info extends Sequelize.Model {
+module.exports = class AdmInfo extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {

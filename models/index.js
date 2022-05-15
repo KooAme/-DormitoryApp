@@ -10,6 +10,8 @@ const HlthRequest = require('./hlth_request');
 const Holiday = require('./holiday');
 const StayoutRequest = require('./stayout_request');
 const StdInfo = require('./std_info');
+const Hot = require('./hot');
+const StdWait = require('./std_wait');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname +
@@ -36,6 +38,8 @@ db.HlthRequest = HlthRequest;
 db.Holiday = Holiday;
 db.StayoutRequest = StayoutRequest;
 db.StdInfo = StdInfo;
+db.Hot = Hot;
+db.StdWait = StdWait;
 
 AdmInfo.init(sequelize);
 AsRequest.init(sequelize);
@@ -48,6 +52,8 @@ HlthRequest.init(sequelize);
 Holiday.init(sequelize);
 StayoutRequest.init(sequelize);
 StdInfo.init(sequelize);
+Hot.init(sequelize);
+StdWait.init(sequelize);
 
 AdmInfo.associate(db);
 AsRequest.associate(db);
@@ -60,5 +66,7 @@ HlthRequest.associate(db);
 Holiday.associate(db);
 StayoutRequest.associate(db);
 StdInfo.associate(db);
+Hot.associate(db);
+StdWait.associate(db);
 
 module.exports = db;

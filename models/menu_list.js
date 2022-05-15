@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-module.exports = class MenuList extends Sequelize.Model {
+module.exports = class FoodList extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {

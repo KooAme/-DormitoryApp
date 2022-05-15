@@ -1,12 +1,12 @@
-const express = require('express');
-const { Op } = require('sequelize');
-const StayoutRequest = require('../models/stayout_request');
-const StdInfo = require('../models/std_info');
+const express = require("express");
+const { Op } = require("sequelize");
+const StayoutRequest = require("../models/stayout_request");
+const StdInfo = require("../models/std_info");
 const router = express.Router();
 
 // 외박 관리
-//'http://localhost:3001/stayout'
-router.post('/', async (req, res, next) => {
+//'http://localhost:3001/admin/stayout'
+router.post("/", async (req, res, next) => {
   try {
     let Id = req.body.std_id;
     let Name = req.body.std_name;
@@ -19,15 +19,15 @@ router.post('/', async (req, res, next) => {
     const data = await StayoutRequest.findAll({
       include: [
         {
-          model: StdInfo,
-        },
+          model: StdInfo
+        }
       ],
       where: {
         std_id: Id,
         std_name: Name,
         start_date: { [Op.gte]: StartDate },
-        end_date: { [Op.lte]: EndDate },
-      },
+        end_date: { [Op.lte]: EndDate }
+      }
     });
     res.json(data);
   } catch (err) {

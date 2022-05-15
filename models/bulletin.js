@@ -47,7 +47,7 @@ module.exports = class Bulletin extends Sequelize.Model {
       foreignKey: 'std_id',
       sourceKey: 'std_id',
     });
-    db.Bulletin.hasMany(db.Comment, {
+    db.Bulletin.hasMany(db.Hot, {
       foreignKey: 'bulletin_id',
       sourceKey: 'bulletin_id',
     });

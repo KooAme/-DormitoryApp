@@ -4,6 +4,8 @@ const HlthRequest = require('../models/hlth_request');
 const StdInfo = require('../models/std_info');
 const router = express.Router();
 
+//'http://localhost:3001/hlth' = '/'
+
 // 헬스 예약자 관리
 //'http://localhost:3001/hlth'
 router.post('/', async (req, res, next) => {
