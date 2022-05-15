@@ -3,12 +3,12 @@ const path = require('path');
 const morgan = require('morgan');
 const { sequelize } = require('./models');
 const cors = require('cors');
-const asReqRouter = require('./routes/asUpdate');
 const bulletRouter = require('./routes/bulletin');
-const hlthReqRouter = require('./routes/hlthRequest');
+const hlthRouter = require('./routes/hlth');
 const stayoutReqRouter = require('./routes/stayout')
 const signinRouter = require('./routes/Signin');
 const hashRouter = require('./routes/Hash');
+const asRouter = require('./routes/as');
 
 const app = express();
 
@@ -29,8 +29,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/bulletin', bulletRouter);
-app.use('/as', asReqRouter);
-app.use('/hlth', hlthReqRouter);
+app.use('/as', asRouter);
+app.use('/hlth', hlthRouter);
 app.use('/stayout', stayoutReqRouter);
 app.use('/signin', signinRouter);
 app.use('/signin/hash', hashRouter);

@@ -3,19 +3,15 @@ import React, { useEffect, useState }from 'react';
 import SetDataList from './SetDataList';
 
 function App(props) {
-  const [data, setData] = useState();
-  useEffect(() => {
-    axios
-      .post('http://localhost:3001/as/update')
-      .then(res => res.data)
-      .then(data => setData(data));
-  }, []);
-  const checkData = data => {
-    if (data === undefined) {
-      return <></>;
-    } else {
-      return <SetDataList data={data}></SetDataList>;
-    }
+  const [id, setId] = useState();
+  const confirm = (e) => {
+    e.preventDefault();
+    console.log(
+      id
+    );
+    axios.post('http://localhost:3001/as/delete', {
+      id
+    })
   };
   return (
     <>
@@ -31,6 +27,9 @@ function App(props) {
         A/S
       </span>
       <form
+        onSubmit={e => {
+          confirm(e);
+        }}
         style={{
           display: 'flex',
           justifyContent: 'center',
@@ -60,9 +59,13 @@ function App(props) {
           <div style={{ margin: 5 }}>
             <label>학번 : </label>
             <input
-              id="std_id"
+              id="id"
               type="text"
+              className="id"
               style={{ width: 60 }}
+              onChange={e => {
+                setId(e.target.value);
+              }}
             />
             <label> 이름 : </label>
             <input type="text" style={{ width: 60 }} />
@@ -119,7 +122,6 @@ function App(props) {
               <td>확인</td>
             </tr>
           </thead>
-          {checkData(data)}
         </table>
         <button
           style={{
@@ -133,7 +135,7 @@ function App(props) {
             paddingBlock: '3px',
             paddingInline: '10px',
             margin: 5,
-          }}
+          }} type="submit"
         >
           적용
         </button>

@@ -3,7 +3,7 @@ const StdInfo = require('../models/std_info');
 const router = express.Router();
 const StdWait = require('../models/std_wait');
 
-//'http://localhost:3001/signin' = /
+//'http://localhost:3001/signin/hash' = /
 router.post('/', async (req, res, next) => {
   try {
     const hash = req.body.hash;
@@ -13,14 +13,12 @@ router.post('/', async (req, res, next) => {
         hash:hash,
       }
     });
-    console.log(data);
     const Id = data[0]['std_id'];
     const Name = data[0]['std_name'];
     const Pnum = data[0]['ph_num'];
     const Rnum = data[0]['room_num'];
     const Email = data[0]['e_mail'];
     const Pw = data[0]['password'];
-    console.log(Id, Name, Pnum, Rnum, Email, Pw)
     if(data.length === 0){
       console.log("잘못된 해쉬 입력");
     } else {

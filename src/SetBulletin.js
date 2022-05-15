@@ -12,7 +12,7 @@ function App(props) {
     if(title === undefined || content === undefined) {
       alert('제목, 내용을 입력하세요');
     } else {
-      axios.post('http://localhost:3001/bulletin', {
+      axios.post('http://localhost:3001/bulletin/create', {
         title, content,
       });
     }

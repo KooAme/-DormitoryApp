@@ -4,7 +4,6 @@ module.exports = class StdWait extends Sequelize.Model {
     return super.init(
       {
         std_id: {
-          primaryKey: true,
           type: Sequelize.INTEGER,
           allowNull: false,
         },
@@ -29,8 +28,9 @@ module.exports = class StdWait extends Sequelize.Model {
           allowNull: false,
         },
         hash: {
-          type: Sequelize.BOOLEAN,
+          type: Sequelize.STRING(30),
           allowNull: false,
+          primaryKey: true,
         },
       },
       {

@@ -19,11 +19,13 @@ module.exports = class Bulletin extends Sequelize.Model {
         },
         views: {
           type: Sequelize.INTEGER,
-          allowNull: false
+          allowNull: false,
+          defaultValue: 0,
         },
         hot: {
           type: Sequelize.INTEGER,
-          allowNull: false
+          allowNull: false,
+          defaultValue: 0,
         },
         create_date: {
           type: Sequelize.DATE,
