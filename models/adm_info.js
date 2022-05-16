@@ -34,7 +34,7 @@ module.exports = class AdmInfo extends Sequelize.Model {
       foreignKey: 'adm_id',
       sourceKey: 'adm_id',
     });
-    db.AdmInfo.hasMany(db.MenuList, {
+    db.AdmInfo.hasMany(db.FoodList, {
       foreignKey: 'adm_id',
       sourceKey: 'adm_id',
     });
