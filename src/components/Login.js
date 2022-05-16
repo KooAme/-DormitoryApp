@@ -19,7 +19,7 @@ function Login(props) {
           <input className='loginInput' placeholder='ID'></input>
           <br />
           <strong className='loginText'>비밀번호</strong>
-          <input className='loginInput' placeholder='PW'></input>
+          <input className='loginInput' placeholder='PW' type={"password"}></input>
           <br />
           <br />
           <button onClick={b} className='loginButton'>

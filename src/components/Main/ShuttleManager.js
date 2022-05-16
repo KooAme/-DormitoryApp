@@ -3,18 +3,8 @@ import '../Css/Main.css';
 
 function ShuttleManager() {
   return (
-    <div className='main' className='mainOver'>
-      <span
-        style={{
-          color: 'white',
-          display: 'flex',
-          fontSize: '20px',
-          padding: 5,
-          paddingLeft: '15px',
-        }}
-      >
-        셔틀 버스 예약자 관리
-      </span>
+    <div className='mainBody'>
+   
       <form style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ margin: 10 }}>
@@ -32,7 +22,7 @@ function ShuttleManager() {
             <input type='text' style={{ width: 30 }} />
             <label> 일 </label>
           </div>
-          <div style={{ margin: 5 }}>
+          <div style={{ margin: 10 }}>
             <label> 학번 : </label>
             <input type='text' style={{ width: 60 }} />
             <label> 이름 : </label>
@@ -57,6 +47,7 @@ function ShuttleManager() {
               paddingBlock: '3px',
               paddingInline: '10px',
               marginLeft: 15,
+              marginTop:"53px"
             }}
           >
             조회
@@ -68,7 +59,8 @@ function ShuttleManager() {
           className='tableSet'
           style={{
             borderCollapse: 'collapse',
-            width: '85%',
+            width: '100%',
+            textAlign:'center',
           }}
         >
           <thead>

@@ -3,18 +3,8 @@ import '../Css/Main.css';
 
 function ShuttleBus() {
   return (
-    <div className='main' className='mainOver'>
-      <span
-        style={{
-          color: 'white',
-          display: 'flex',
-          fontSize: '20px',
-          padding: 5,
-          paddingLeft: '15px',
-        }}
-      >
-        셔틀 버스 관리
-      </span>
+    <div className='mainBody'>
+      
       <form style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ margin: 10 }}>
@@ -23,8 +13,8 @@ function ShuttleBus() {
             <label> 방향 : </label>
             <input type='text' style={{ width: 120 }} />
           </div>
-          <div style={{ margin: 5 }}>
-            <label> 시간: </label>
+          <div style={{ margin: 10 }}>
+            <label> 시간 : </label>
             <input type='text' style={{ width: 40 }} />
             <label style={{ marginRight: 15 }}> 시 </label>
             <label> 정류소 : </label>
@@ -47,6 +37,7 @@ function ShuttleBus() {
               paddingBlock: '3px',
               paddingInline: '10px',
               marginRight: 5,
+              marginTop:'48px',
             }}
           >
             조회
@@ -60,6 +51,7 @@ function ShuttleBus() {
               paddingBlock: '3px',
               paddingInline: '10px',
               marginLeft: 15,
+              marginTop:'48px',
             }}
           >
             추가
@@ -71,7 +63,8 @@ function ShuttleBus() {
           className='tableSet'
           style={{
             borderCollapse: 'collapse',
-            width: '85%',
+            width: '100%',
+            textAlign:'center'
           }}
         >
           <thead>

@@ -1,25 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap');
 body {
   margin: 0;
   width: 100%;
   height: 100%;
 }
-.container {
-  width: 15%;
+/* .container {
+  width: 20vh;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
   align-content: stretch;
-}
+} */
 .menu {
   float: left;
-  width: 15%;
-  height: 75vh;
-  background-color: rgb(171, 192, 219);
-  font-size: 12pt;
-  font-family: 'Do Hyeon', sans-serif;
+  width: 20vh;
+  height: 85vh;
+  background-color: rgb(218,227,243);
+  font-size: 2vh;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
 }
 .MenuName {
   cursor: pointer;
@@ -29,6 +31,7 @@ body {
   cursor: pointer;
   display: none;
   margin: 15%;
+  width: auto;
 }
 .MenuName1 {
   cursor: pointer;
@@ -37,20 +40,28 @@ body {
 .MenuDisappear1 {
   display: none;
   margin: 15%;
-  width: 15vw;
+  width: auto;
   height: 35vh;
 }
 .MenuText {
-  margin-top: 10%;
+  margin-top: 25%;
   cursor: pointer;
+}
+.MenuText:hover{
+  background-color: rgb(132, 151, 176);
+  width: auto;
+  height: 3.9vh;
+  border-radius: 10px;
 }
 .MenuMenu {
   cursor: pointer;
-  height: 4vh;
-  font-size: 20pt;
+  height: 7vh;
+  width: auto;
+  font-size: 4vh;
   margin-top: 0;
   text-align: center;
-  background-color: rgb(95, 124, 158);
+  background-color: rgb(132, 151, 176);
+  vertical-align: middle;
 }
 
 .MenuOver {
@@ -58,5 +69,5 @@ body {
   height: 7vh;
   margin-top: 0;
   text-align: center;
-  background-color: rgb(74, 74, 116);
+  background-color: rgb(218,227,243);
 }

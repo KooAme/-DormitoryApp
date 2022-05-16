@@ -10,6 +10,7 @@ import MenuPlanner from './Main/MenuPlanner';
 import DayOff from './Main/DayOff';
 import UserManager from './Main/UserManager';
 
+
 function Main(props) {
   let mode = props.mode;
 
@@ -24,9 +25,30 @@ function Main(props) {
     DayOff: <DayOff />,
     UserManager: <UserManager />,
   };
+  const  text= {
+    ManagerPage: "관리자", 
+    AsRequest: "A/S",
+    GymReser: "헬스",
+    OverNight: "외박",
+    ShuttleManager: "셔틀버스",
+    MenuPlanner: "식단표",
+    ShuttleBus:"셔틀버스",
+    DayOff: "휴일",
+    UserManager: "사용자관리",
+  };
 
   return (
-    <div className='main' className='mainOver'>
+    <div >
+      { <span className='mainN'style={{
+          color: 'white',
+          display: 'flex',
+          fontSize: '4vh',
+          textAlign:"center",
+          textIndent:'2vh',
+          verticalAlign: 'middle',
+        }}>
+        {text[mode]}
+      </span> }
       {modes[mode]}
     </div>
   );

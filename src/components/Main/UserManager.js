@@ -3,18 +3,8 @@ import '../Css/Main.css';
 
 function UserManager() {
   return (
-    <div className='main' className='mainOver'>
-      <span
-        style={{
-          color: 'white',
-          display: 'flex',
-          fontSize: '20px',
-          padding: 5,
-          paddingLeft: '15px',
-        }}
-      >
-        헬스
-      </span>
+    <div className='mainBody'>
+      
       <form style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ margin: 25 }}>
@@ -44,6 +34,7 @@ function UserManager() {
               paddingBlock: '3px',
               paddingInline: '10px',
               marginLeft: 15,
+            
             }}
           >
             조회
@@ -55,7 +46,8 @@ function UserManager() {
           className='tableSet'
           style={{
             borderCollapse: 'collapse',
-            width: '85%',
+            width: '100%',
+            textAlign:"center",
           }}
         >
           <thead>

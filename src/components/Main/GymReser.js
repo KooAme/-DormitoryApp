@@ -3,18 +3,8 @@ import '../Css/Main.css';
 
 function GymReser() {
   return (
-    <div className='main' className='mainOver'>
-      <span
-        style={{
-          color: 'white',
-          display: 'flex',
-          fontSize: '20px',
-          padding: 5,
-          paddingLeft: '15px',
-        }}
-      >
-        헬스
-      </span>
+    <div className='mainBody'>
+     
       <form style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ margin: 10 }}>
@@ -32,7 +22,7 @@ function GymReser() {
             <input type='text' style={{ width: 30 }} />
             <label> 일 </label>
           </div>
-          <div style={{ margin: 5 }}>
+          <div style={{ margin: 10  }}>
             <label> 학번 : </label>
             <input type='text' style={{ width: 60 }} />
             <label> 이름 : </label>
@@ -59,7 +49,8 @@ function GymReser() {
               borderRadius: '5px',
               paddingBlock: '3px',
               paddingInline: '10px',
-              marginLeft: 15,
+              marginLeft: '15px',
+              marginTop:'53px',
             }}
           >
             조회
@@ -71,7 +62,8 @@ function GymReser() {
           className='tableSet'
           style={{
             borderCollapse: 'collapse',
-            width: '85%',
+            width: '100%',
+            textAlign:'center'
           }}
         >
           <thead>

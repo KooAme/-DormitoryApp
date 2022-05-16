@@ -3,18 +3,8 @@ import '../Css/Main.css';
 
 function DayOff() {
   return (
-    <div className='main' className='mainOver'>
-      <span
-        style={{
-          color: 'white',
-          display: 'flex',
-          fontSize: '20px',
-          padding: 5,
-          paddingLeft: '15px',
-        }}
-      >
-        휴일
-      </span>
+    <div className='mainBody'>
+      
       <form style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ margin: 25 }}>
@@ -36,7 +26,7 @@ function DayOff() {
             marginLeft: 15,
           }}
         >
-          <button
+          <button 
             style={{
               backgroundColor: 'orange',
               color: 'white',
@@ -69,7 +59,8 @@ function DayOff() {
           className='tableSet'
           style={{
             borderCollapse: 'collapse',
-            width: '85%',
+            width: '100%',
+            textAlign:'center'
           }}
         >
           <thead>

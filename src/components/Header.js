@@ -2,8 +2,8 @@ import React from 'react';
 import './Css/Header.css';
 
 function Header(props) {
-  let mode = props.mode;
-  const menus = {
+  //let mode = props.mode; 
+  const menus = { // 객체 
     Login: 'Login',
     ManagerPage: '초기 화면',
     AsRequest: 'A/S 신청자 관리',
@@ -18,7 +18,9 @@ function Header(props) {
 
   return (
     <div className='header'>
-      <h1>{menus[mode]}</h1>
+      <div className='headerBox'> 
+      <div className='headerText'>{menus[props.mode]}</div>
+      </div>
     </div>
   );
 }

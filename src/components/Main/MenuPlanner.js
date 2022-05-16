@@ -3,18 +3,8 @@ import '../Css/Main.css';
 
 function MenuPlanner() {
   return (
-    <div className='main' className='mainOver'>
-      <span
-        style={{
-          color: 'white',
-          display: 'flex',
-          fontSize: '20px',
-          padding: 5,
-          paddingLeft: '15px',
-        }}
-      >
-        식단표
-      </span>
+    <div className='mainBody'>
+      
       <form style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ margin: 10 }}>
@@ -26,7 +16,7 @@ function MenuPlanner() {
             <input type='text' style={{ width: 40 }} />
             <label> 일</label>
           </div>
-          <div style={{ margin: 5 }}>
+          <div style={{ margin: 10 }}>
             <label> 조식 : </label>
             <input type='text' style={{ width: 100 }} />
             <label> 중식 : </label>
@@ -38,7 +28,7 @@ function MenuPlanner() {
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
+            /* alignItems: 'center', */
             marginLeft: 15,
           }}
         >
@@ -50,7 +40,8 @@ function MenuPlanner() {
               borderRadius: '5px',
               paddingBlock: '3px',
               paddingInline: '10px',
-              marginRight: 5,
+              marginRight: '5px',
+              marginTop: '48px'
             }}
           >
             조회
@@ -63,7 +54,8 @@ function MenuPlanner() {
               borderRadius: '5px',
               paddingBlock: '3px',
               paddingInline: '10px',
-              marginLeft: 15,
+              marginLeft: '15px',
+              marginTop:'48px', 
             }}
           >
             추가
@@ -75,18 +67,20 @@ function MenuPlanner() {
           className='tableSet'
           style={{
             borderCollapse: 'collapse',
-            width: '85%',
+            width: '100%',
+            textAlign:'center',
+            tableLayout:'fixed'
           }}
         >
-          <thead>
-            <tr
+          <thead >
+            <tr 
               style={{
                 color: 'white',
                 backgroundColor: '#21429c',
                 height: '4vh',
               }}
             >
-              <td>번호</td>
+              <td nowrap>번호</td>
               <td>날짜</td>
               <td>조식</td>
               <td>중식</td>
