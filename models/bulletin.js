@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 module.exports = class Bulletin extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
@@ -38,30 +38,30 @@ module.exports = class Bulletin extends Sequelize.Model {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: 'Bulletin',
-        tableName: 'bulletin',
+        modelName: "Bulletin",
+        tableName: "bulletin",
         paranoid: false,
-        charset: 'utf8mb4',
-        collate: 'utf8mb4_general_ci',
+        charset: "utf8mb4",
+        collate: "utf8mb4_general_ci",
       }
     );
   }
   static associate(db) {
     db.Bulletin.belongsTo(db.StdInfo, {
-      foreignKey: 'std_id',
-      sourceKey: 'std_id',
+      foreignKey: "std_id",
+      sourceKey: "std_id",
     });
     db.Bulletin.hasMany(db.Hot, {
-      foreignKey: 'bulletin_id',
-      sourceKey: 'bulletin_id',
+      foreignKey: "bulletin_id",
+      sourceKey: "bulletin_id",
     });
     db.Bulletin.hasMany(db.Comment, {
-      foreignKey: 'bulletin_id',
-      sourceKey: 'bulletin_id',
+      foreignKey: "bulletin_id",
+      sourceKey: "bulletin_id",
     });
     db.Bulletin.hasMany(db.ImageArr, {
-      foreignKey: 'bulletin_id',
-      sourceKey: 'bulletin_id',
+      foreignKey: "bulletin_id",
+      sourceKey: "bulletin_id",
     });
   }
 };

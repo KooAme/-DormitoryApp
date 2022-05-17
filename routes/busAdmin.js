@@ -4,8 +4,10 @@ const StdInfo = require('../models/std_info');
 const BusRequest = require('../models/bus_request');
 const router = express.Router();
 
-// 셔틀 버스 예약자 관리
-//'http://localhost:3001/busreq'
+//'http://localhost:3001/admin/bus' = '/'
+
+// 셔틀 버스 예약자 조회
+//'http://localhost:3001/admin/bus'
 router.put('/', async (req, res, next) => {
   try {
     let Id = req.body.std_id;
@@ -35,7 +37,7 @@ router.put('/', async (req, res, next) => {
         bus_way: BusWay,
       },
     });
-    res.json(data);
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err);
     next(err);

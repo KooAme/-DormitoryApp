@@ -4,7 +4,9 @@ const StayoutRequest = require('../models/stayout_request');
 const StdInfo = require('../models/std_info');
 const router = express.Router();
 
-// 외박 관리
+//'http://localhost:3001/admin/stayout' = '/'
+
+// 외박 조회
 //'http://localhost:3001/admin/stayout'
 router.post('/', async (req, res, next) => {
   try {
@@ -14,25 +16,29 @@ router.post('/', async (req, res, next) => {
     let EndDate = req.body.end_date;
     Id = Id || { [Op.ne]: null };
     Name = Name || { [Op.ne]: null };
-    StartDate = StartDate || { [Op.ne]: null };
-    EndDate = EndDate || { [Op.ne]: null };
+    StartDate = StartDate || '1970-01-01';
+    EndDate = EndDate || new Date();
     const data = await StayoutRequest.findAll({
       include: [
         {
           model: StdInfo,
+          where: {
+            std_id: Id,
+            std_name: Name,
+          },
         },
       ],
       where: {
-        std_id: Id,
-        std_name: Name,
-        start_date: { [Op.gte]: StartDate },
-        end_date: { [Op.lte]: EndDate },
+        request_date: {
+          [Op.between]: [StartDate, EndDate],
+        },
       },
     });
-    res.json(data);
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err);
     next(err);
   }
 });
+
 module.exports = router;

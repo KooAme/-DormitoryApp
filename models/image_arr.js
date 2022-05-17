@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 module.exports = class ImageArr extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
@@ -6,15 +6,19 @@ module.exports = class ImageArr extends Sequelize.Model {
         image_id: {
           type: Sequelize.INTEGER,
           allowNull: false,
-          autoIncrement:true,
+          autoIncrement: true,
           primaryKey: true,
         },
         image_url: {
-          type: Sequelize.TEXT,
+          type: Sequelize.BLOB("long"),
           allowNull: false,
         },
-        image_num: {
-          type: Sequelize.INTEGER,
+        image_width: {
+          type: Sequelize.STRING(5),
+          allowNull: false,
+        },
+        image_height: {
+          type: Sequelize.STRING(5),
           allowNull: false,
         },
       },
@@ -22,18 +26,18 @@ module.exports = class ImageArr extends Sequelize.Model {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: 'ImageArr',
-        tableName: 'image_arr',
+        modelName: "ImageArr",
+        tableName: "image_arr",
         paranoid: false,
-        charset: 'utf8mb4',
-        collate: 'utf8mb4_general_ci',
+        charset: "utf8mb4",
+        collate: "utf8mb4_general_ci",
       }
     );
   }
   static associate(db) {
     db.ImageArr.belongsTo(db.Bulletin, {
-      foreignKey: 'bulletin_id',
-      sourceKey: 'bulletin_id'
+      foreignKey: "bulletin_id",
+      sourceKey: "bulletin_id",
     });
   }
 };

@@ -18,8 +18,7 @@ router.post('/', async (req, res, next) => {
         date: Date,
       },
     });
-    res.send('휴일 관리/조회');
-    res.json(data);
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err);
     next(err);
@@ -27,18 +26,14 @@ router.post('/', async (req, res, next) => {
 });
 
 // 휴일 관리/ 추가
-//'http://localhost:3001/admin/holiday/add'
-router.post('/add', async (req, res, next) => {
+//'http://localhost:3001/admin/holiday/create'
+router.post('/create', async (req, res, next) => {
   try {
-    // 아래 임시 코드
-    let Name = req.body.name;
-    let Date = req.body.date;
     const data = await Holiday.create({
-      name: Name,
-      date: Date,
+      name: req.body.name,
+      date: req.body.date,
     });
-    res.send('휴일 관리/추가');
-    res.json(data);
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err);
     next(err);
@@ -49,15 +44,12 @@ router.post('/add', async (req, res, next) => {
 //'http://localhost:3001/admin/holiday'
 router.delete('/', async (req, res, next) => {
   try {
-    const Id = req.body.id;
-    // 아래 임시 코드
     const data = await Holiday.destroy({
       where: {
-        holiday_id: Id,
+        holiday_id: req.body.id,
       },
     });
-    res.send('휴일 관리/제거');
-    res.json(data);
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err);
     next(err);

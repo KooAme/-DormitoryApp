@@ -1,10 +1,11 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import SetBulletin from './SetBulletin';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import SetBulletin from "./SetBulletin";
+z;
 
 function App(props) {
   const [isLogin, setIsLogin] = useState(false);
-  const [mode, setMode] = useState('Login');
+  const [mode, setMode] = useState("Login");
 
   useEffect(() => {
     console.log(mode);
@@ -14,10 +15,10 @@ function App(props) {
     // 로그인 버튼 클릭
     e.preventDefault();
     setIsLogin(true);
-    setMode('ManagerPage');
+    setMode("ManagerPage");
   }
 
-  const onChangeMode = mode => {
+  const onChangeMode = (mode) => {
     // 메뉴 항목 클릭
     setMode(mode);
   };
@@ -25,7 +26,7 @@ function App(props) {
   if (!isLogin) {
     return (
       <>
-        <Header mode={'Login'} />
+        <Header mode={"Login"} />
         <Login button={clickButton} />
       </>
     );

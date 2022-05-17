@@ -4,8 +4,10 @@ const AsRequest = require('../models/as_request');
 const StdInfo = require('../models/std_info');
 const router = express.Router();
 
-// 전체조회
-//'http://localhost:3001/as/request'
+//'http://localhost:3001/admin/as' = '/'
+
+// A/S 신청 조회
+//'http://localhost:3001/admin/as'
 router.post('/', async (req, res, next) => {
   try {
     let Id = req.body.std_id;
@@ -33,27 +35,25 @@ router.post('/', async (req, res, next) => {
       },
       order: [['request_date', 'DESC']],
     });
-    res.send('A/S 관리/조회');
-    res.json(data);
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err);
     next(err);
   }
 });
 
-// 처리 확인
-//'http://localhost:3001/as/request/check'
-router.put('/check', async (req, res, next) => {
+// A/S 처리 확인
+//'http://localhost:3001/admin/as'
+router.patch('/', async (req, res, next) => {
   try {
     let Id = req.body.id;
     const data = await AsRequest.update(
-      { confirm: true },
+      { repair_date:Date.now() },
       {
         where: { as_id: Id },
       }
     );
-    res.send('A/S 관리/처리확인');
-    res.json(data);
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err);
     next(err);

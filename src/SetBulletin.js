@@ -1,5 +1,5 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 function App(props) {
   const [title, setTitle] = useState();
@@ -8,9 +8,9 @@ function App(props) {
     e.preventDefault();
     console.log(title, content);
     if (title === undefined || content === undefined) {
-      alert('제목, 내용을 입력하세요');
+      alert("제목, 내용을 입력하세요");
     } else {
-      axios.post('http://localhost:3001/bulletin/create', {
+      axios.post("http://localhost:3001/bulletin/create", {
         title,
         content,
       });
@@ -21,7 +21,7 @@ function App(props) {
       <h1>게시판</h1>
       <form
         className="bulletin"
-        onSubmit={e => {
+        onSubmit={(e) => {
           confirm(e);
         }}
       >
@@ -33,7 +33,7 @@ function App(props) {
             type="text"
             className="form-control"
             id="title"
-            onChange={e => {
+            onChange={(e) => {
               setTitle(e.target.value);
             }}
           />
@@ -46,7 +46,7 @@ function App(props) {
             type="text"
             className="form-control"
             id="content"
-            onChange={e => {
+            onChange={(e) => {
               setContent(e.target.value);
             }}
           />

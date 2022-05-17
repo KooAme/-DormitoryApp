@@ -15,7 +15,7 @@ const hashRouter = require('./routes/Hash');
 
 // 웹 라우터
 const agreeAdminRouter = require('./routes/agree');
-const asAdminRouter = require('./routes/as');
+const asAdminRouter = require('./routes/asAdmin');
 const busAdminRouter = require('./routes/busAdmin');
 const busInfoAdminRouter = require('./routes/busInfo');
 const hlthAdminRouter = require('./routes/hlthAdmin');

@@ -4,22 +4,22 @@ const HlthRequest = require('../models/hlth_request');
 const StdInfo = require('../models/std_info');
 const router = express.Router();
 
-//'http://localhost:3001/hlth' = '/'
+//'http://localhost:3001/admin/hlth' = '/'
 
-// 헬스 예약자 관리
-//'http://localhost:3001/hlth'
+// 헬스 예약자 조회
+//'http://localhost:3001/admin/hlth'
 router.post('/', async (req, res, next) => {
   try {
     let Id = req.body.std_id;
     let Name = req.body.std_name;
-    let StartDate = req.body.start_date;
-    let EndDate = req.body.end_date;
-    let Time = req.body.time;
+    let date = req.body.date;
+    let StartTime = req.body.start_time;
+    let EndTime = req.body.end_time;
     Id = Id || { [Op.ne]: null };
     Name = Name || { [Op.ne]: null };
-    StartDate = StartDate || { [Op.ne]: null };
-    EndDate = EndDate || { [Op.ne]: null };
-    Time = Time || { [Op.ne]: null };
+    date = date || new Date();
+    StartTime = StartTime || { [Op.ne]: null };
+    EndTime = EndTime || { [Op.ne]: null };
     const data = await HlthRequest.findAll({
       include: [
         {
@@ -31,14 +31,10 @@ router.post('/', async (req, res, next) => {
         },
       ],
       where: {
-        req_date: {
-          [Op.between]: [StartDate, EndDate],
-        },
-        req_time: Time,
+        date: date,
       },
     });
-    res.send('성공');
-    res.json(data);
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err);
     next(err);

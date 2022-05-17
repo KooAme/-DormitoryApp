@@ -3,19 +3,74 @@ const { Op } = require('sequelize');
 const MenuList = require('../models/menu_list');
 const router = express.Router();
 
-// 식단표 관리
+//'http://localhost:3001/admin/menu' = '/'
+
+// 식단표 조회
 //'http://localhost:3001/admin/menu'
-router.put('/', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    // 해당 날짜의 조식 중식 석식 조회
-    let Date = req.body.date;
-    Date = Date || { [Op.ne]: null };
+    let date = req.body.date;
+    let Type = req.body.type;
+    date = date || { [Op.ne]: null };
+    Type = Type || { [Op.ne]: null };
     const data = await MenuList.findAll({
       where: {
-        date: Date,
+        date: date,
+        type: Type,
       },
     });
-    res.json(data);
+    return res.status(200).json(data);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+// 식단표 수정
+//'http://localhost:3001/admin/menu'
+router.patch('/', async (req, res, next) => {
+  try {
+    const data = await MenuList.update({
+      date: req.body.date,
+      type: req.body.type,
+      menu: req.body.menu,
+      where: {
+        menu_id: req.body.menu_id,
+      },
+    });
+    return res.status(200).json(data);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+// 식단표 등록
+//'http://localhost:3001/admin/menu/create'
+router.post('/create', async (req, res, next) => {
+  try {
+    const data = await MenuList.create({
+      date: req.body.date,
+      type: req.body.type,
+      menu: req.body.menu,
+    });
+    return res.status(200).json(data);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+// 식단표 삭제
+//'http://localhost:3001/admin/menu'
+router.delete('/', async (req, res, next) => {
+  try {
+    const data = await MenuList.update({
+      where: {
+        menu_id: req.body.menu_id,
+      },
+    });
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err);
     next(err);
