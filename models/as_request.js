@@ -43,10 +43,6 @@ module.exports = class AsRequest extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.AsRequest.belongsTo(db.AdmInfo, {
-      foreignKey: 'adm_id',
-      sourceKey: 'adm_id',
-    });
     db.AsRequest.belongsTo(db.StdInfo, {
       foreignKey: 'std_id',
       sourceKey: 'std_id',

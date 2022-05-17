@@ -42,10 +42,5 @@ module.exports = class BusInfo extends Sequelize.Model {
       }
     );
   }
-  static associate(db) {
-    db.BusInfo.belongsTo(db.AdmInfo, {
-      foreignKey: 'adm_id',
-      sourceKey: 'adm_id',
-    })
-  }
+  static associate(db) {}
 };

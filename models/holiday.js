@@ -31,9 +31,5 @@ module.exports = class Holiday extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.Holiday.belongsTo(db.AdmInfo, {
-      foreignKey: 'adm_id',
-      sourceKey: 'adm_id',
-    });
   }
 };

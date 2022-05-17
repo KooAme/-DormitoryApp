@@ -35,9 +35,5 @@ module.exports = class MenuList extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.MenuList.belongsTo(db.AdmInfo, {
-      foreignKey: 'adm_id',
-      sourceKey: 'adm_id',
-    });
   }
 };
