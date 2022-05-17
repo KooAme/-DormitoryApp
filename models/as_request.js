@@ -11,23 +11,18 @@ module.exports = class AsRequest extends Sequelize.Model {
         },
         title: {
           type: Sequelize.STRING(50),
-          allowNull: true,
+          allowNull: false,
         },
         content: {
           type: Sequelize.TEXT,
           allowNull: false,
-        },
-        confirm: {
-          type: Sequelize.BOOLEAN,
-          allowNull: false,
-          defaultValue: false,
         },
         request_date: {
           type: Sequelize.DATE,
           allowNull: false,
           defaultValue: new Date(),
         },
-        vst_date: {
+        vst_check: {
           type: Sequelize.BOOLEAN,
           allowNull: false,
         },

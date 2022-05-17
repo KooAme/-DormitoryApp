@@ -1,5 +1,4 @@
 const express = require('express');
-const StdInfo = require('../models/std_info');
 const router = express.Router();
 const StdWait = require('../models/std_wait');
 

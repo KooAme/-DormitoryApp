@@ -47,10 +47,6 @@ module.exports = class StdInfo extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.StdInfo.hasMany(db.BusInfo, {
-      foreignKey: 'std_id',
-      sourceKey: 'std_id',
-    });
     db.StdInfo.hasMany(db.BusRequest, {
       foreignKey: 'std_id',
       sourceKey: 'std_id',

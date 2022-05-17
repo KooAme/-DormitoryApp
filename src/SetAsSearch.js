@@ -6,7 +6,7 @@ function App(props) {
   const [data, setData] = useState();
   useEffect(() => {
     axios
-      .post('http://localhost:3001/as/update')
+      .post('http://localhost:3001/as/search')
       .then(res => res.data)
       .then(data => setData(data));
   }, []);

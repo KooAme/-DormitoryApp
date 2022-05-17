@@ -13,25 +13,13 @@ const SetDataList = props => {
           backgroundColor: '#e9e9e9',
         }}
       >
-        <td>
-          <input value={data.as_id}></input>
-        </td>
-        <td>
-          <input value={data.StdInfo.std_id}></input>
-        </td>
-        <td>
-          <input value={data.StdInfo.std_name}></input>
-        </td>
-        <td>
-          <input value={data.StdInfo.room_num}></input>
-        </td>
-        <td>
-          <input value={data.title}></input>
-        </td>
-        <td>
-          <input onfocus={data.StdInfo.ph_num}></input>
-        </td>
-        <td>{data.request_date}</td>
+        <td>{data.as_id}</td>
+        <td>{data.StdInfo.std_id}</td>
+        <td>{data.StdInfo.std_name}</td>
+        <td>{data.StdInfo.room_num}</td>
+        <td>{data.title}</td>
+        <td>{data.StdInfo.ph_num}</td>
+        <td>{data.request_date.split('T')[0]}</td>
         <td>{confirm}</td>
         <td>
           <input type="checkbox" />

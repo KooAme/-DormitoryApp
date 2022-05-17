@@ -1,20 +1,20 @@
 const Sequelize = require('sequelize');
-module.exports = class Comment extends Sequelize.Model {
+module.exports = class ImageArr extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        comment_id: {
+        image_id: {
           type: Sequelize.INTEGER,
           allowNull: false,
-          autoIncrement: true,
+          autoIncrement:true,
           primaryKey: true,
         },
-        content: {
+        image_url: {
           type: Sequelize.TEXT,
           allowNull: false,
         },
-        create_date: {
-          type: Sequelize.DATE,
+        image_num: {
+          type: Sequelize.INTEGER,
           allowNull: false,
         },
       },
@@ -22,8 +22,8 @@ module.exports = class Comment extends Sequelize.Model {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: 'Comment',
-        tableName: 'comment',
+        modelName: 'ImageArr',
+        tableName: 'image_arr',
         paranoid: false,
         charset: 'utf8mb4',
         collate: 'utf8mb4_general_ci',
@@ -31,13 +31,9 @@ module.exports = class Comment extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.Comment.belongsTo(db.StdInfo, {
-      foreignKey: 'std_id',
-      sourceKey: 'std_id',
-    });
-    db.Comment.belongsTo(db.Bulletin, {
-      foreignKey: "bulletin_id",
-      sourceKey: "bulletin_id"
+    db.ImageArr.belongsTo(db.Bulletin, {
+      foreignKey: 'bulletin_id',
+      sourceKey: 'bulletin_id'
     });
   }
 };

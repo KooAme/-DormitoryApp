@@ -12,6 +12,7 @@ const StayoutRequest = require('./stayout_request');
 const StdInfo = require('./std_info');
 const Hot = require('./hot');
 const StdWait = require('./std_wait');
+const ImageArr = require('./image_arr');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname +
@@ -40,6 +41,7 @@ db.StayoutRequest = StayoutRequest;
 db.StdInfo = StdInfo;
 db.Hot = Hot;
 db.StdWait = StdWait;
+db.ImageArr = ImageArr;
 
 AdmInfo.init(sequelize);
 AsRequest.init(sequelize);
@@ -54,6 +56,7 @@ StayoutRequest.init(sequelize);
 StdInfo.init(sequelize);
 Hot.init(sequelize);
 StdWait.init(sequelize);
+ImageArr.init(sequelize);
 
 AdmInfo.associate(db);
 AsRequest.associate(db);
@@ -68,5 +71,6 @@ StayoutRequest.associate(db);
 StdInfo.associate(db);
 Hot.associate(db);
 StdWait.associate(db);
+ImageArr.associate(db);
 
 module.exports = db;

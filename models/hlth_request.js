@@ -9,11 +9,15 @@ module.exports = class HlthRequest extends Sequelize.Model {
           allowNull: false,
           autoIncrement: true
         },
-        req_date: {
+        date: {
           type: Sequelize.DATE,
           allowNull: false
         },
-        req_time: {
+        start_time: {
+          type: Sequelize.TIME,
+          allowNull: false
+        },
+        end_time: {
           type: Sequelize.TIME,
           allowNull: false
         }
