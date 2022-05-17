@@ -17,12 +17,12 @@ module.exports = class Bulletin extends Sequelize.Model {
           type: Sequelize.TEXT,
           allowNull: false
         },
-        views: {
+        views: { // 조회수
           type: Sequelize.INTEGER,
           allowNull: false,
           defaultValue: 0,
         },
-        hot: {
+        hot: { // 추천수
           type: Sequelize.INTEGER,
           allowNull: false,
           defaultValue: 0,
@@ -52,6 +52,14 @@ module.exports = class Bulletin extends Sequelize.Model {
     db.Bulletin.hasMany(db.Hot, {
       foreignKey: "bulletin_id",
       sourceKey: "bulletin_id",
-    })
+    });
+    db.Bulletin.hasMany(db.Comment, {
+      foreignKey: "bulletin_id",
+      sourceKey: "bulletin_id",
+    });
+    db.Bulletin.hasMany(db.ImageArr, {
+      foreignKey: 'bulletin_id',
+      sourceKey: 'bulletin_id',
+    });
   }
 };

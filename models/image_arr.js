@@ -1,23 +1,20 @@
 const Sequelize = require('sequelize');
-module.exports = class FoodList extends Sequelize.Model {
+module.exports = class ImageArr extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        food_id: {
-          primaryKey: true,
+        image_id: {
           type: Sequelize.INTEGER,
           allowNull: false,
+          autoIncrement:true,
+          primaryKey: true,
         },
-        date: {
-          type: Sequelize.DATE,
+        image_url: {
+          type: Sequelize.TEXT,
           allowNull: false,
         },
-        type: {
-          type: Sequelize.STRING(30),
-          allowNull: false,
-        },
-        menu: {
-          type: Sequelize.STRING(30),
+        image_num: {
+          type: Sequelize.INTEGER,
           allowNull: false,
         },
       },
@@ -25,8 +22,8 @@ module.exports = class FoodList extends Sequelize.Model {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: 'FoodList',
-        tableName: 'food_list',
+        modelName: 'ImageArr',
+        tableName: 'image_arr',
         paranoid: false,
         charset: 'utf8mb4',
         collate: 'utf8mb4_general_ci',
@@ -34,9 +31,9 @@ module.exports = class FoodList extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.FoodList.belongsTo(db.AdmInfo, {
-      foreignKey: 'adm_id',
-      sourceKey: 'adm_id',
+    db.ImageArr.belongsTo(db.Bulletin, {
+      foreignKey: 'bulletin_id',
+      sourceKey: 'bulletin_id'
     });
   }
 };

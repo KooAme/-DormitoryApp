@@ -21,7 +21,7 @@ module.exports = class AsRequest extends Sequelize.Model {
           type: Sequelize.DATE,
           allowNull: false,
         },
-        vst_date: {
+        vst_check: {
           type: Sequelize.BOOLEAN,
           allowNull: false,
         },

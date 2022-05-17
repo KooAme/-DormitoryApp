@@ -3,7 +3,7 @@ module.exports = class StayoutRequest extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        Stayout_id: {
+        stayout_id: {
           primaryKey: true,
           type: Sequelize.INTEGER,
           allowNull: false,
