@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom/client';
 // import App from './SetSignin';
 // import App from './HashInput';
 // import App from './SetAsDelete';
+import App from './ImageArr';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'));

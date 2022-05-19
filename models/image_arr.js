@@ -9,12 +9,8 @@ module.exports = class ImageArr extends Sequelize.Model {
           autoIncrement:true,
           primaryKey: true,
         },
-        image_url: {
-          type: Sequelize.TEXT,
-          allowNull: false,
-        },
-        image_num: {
-          type: Sequelize.INTEGER,
+        path: {
+          type: Sequelize.BLOB('long'),
           allowNull: false,
         },
       },
