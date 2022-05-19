@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 module.exports = class StdWait extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
@@ -37,11 +37,11 @@ module.exports = class StdWait extends Sequelize.Model {
         sequelize,
         timestamps: false,
         underscored: false,
-        modelName: 'StdWait',
-        tableName: 'std_wait',
+        modelName: "StdWait",
+        tableName: "std_wait",
         paranoid: false,
-        charset: 'utf8mb4',
-        collate: 'utf8mb4_general_ci',
+        charset: "utf8mb4",
+        collate: "utf8mb4_general_ci",
       }
     );
   }

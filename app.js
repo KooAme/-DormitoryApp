@@ -1,75 +1,94 @@
-const express = require('express');
-const path = require('path');
-const morgan = require('morgan');
-const cors = require('cors');
-const { sequelize } = require('./models');
+const express = require("express");
+const path = require("path");
+const morgan = require("morgan");
+const cors = require("cors");
+const passport = require("passport");
+const { sequelize } = require("./models");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 // 모바일 라우터
-const loginRouter = require('./routes/login');
-const asRouter = require('./routes/asApp');
-const bulletRouter = require('./routes/bulletinApp');
-const busRouter = require('./routes/busApp');
-const hlthRouter = require('./routes/hlthApp');
-const stayoutRouter = require('./routes/stayoutApp');
-const signinRouter = require('./routes/Signin');
-const hashRouter = require('./routes/Hash');
+const authRouter = require("./routes/auth");
+const asRouter = require("./routes/asApp");
+const bulletRouter = require("./routes/bulletinApp");
+const busRouter = require("./routes/busApp");
+const hlthRouter = require("./routes/hlthApp");
+const stayoutRouter = require("./routes/stayoutApp");
+const signUpRouter = require("./routes/signUp");
+const hashRouter = require("./routes/Hash");
+const commentRouter = require("./routes/comment");
 
 // 웹 라우터
-const agreeAdminRouter = require('./routes/agree');
-const asAdminRouter = require('./routes/as');
-const busAdminRouter = require('./routes/busAdmin');
-const busInfoAdminRouter = require('./routes/busInfo');
-const hlthAdminRouter = require('./routes/hlthAdmin');
-const holidayAdminRouter = require('./routes/holidayAdmin');
-const menuAdminRouter = require('./routes/menu');
-const stayoutAdminRouter = require('./routes/stayoutAdmin');
+const agreeAdminRouter = require("./routes/agree");
+const asAdminRouter = require("./routes/as");
+const busAdminRouter = require("./routes/busAdmin");
+const busInfoAdminRouter = require("./routes/busInfo");
+const hlthAdminRouter = require("./routes/hlthAdmin");
+const holidayAdminRouter = require("./routes/holidayAdmin");
+const menuAdminRouter = require("./routes/menu");
+const stayoutAdminRouter = require("./routes/stayoutAdmin");
 
 const app = express();
 
-app.set('port', process.env.PORT || 3001);
+app.set("port", process.env.PORT || 3001);
 sequelize
   .sync({ force: !true })
   // .sync({ force: true }) true시 테이블 새로 생성됨!
   .then(() => {
-    console.log('데이터베이스 연결 성공');
+    console.log("데이터베이스 연결 성공");
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
   });
+app.use(
+  session({
+    secret: "!@#!ASDASD!EWQE!@#",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false,
+    },
+    store: new SequelizeStore({
+      db: sequelize,
+    }),
+  })
+);
+app.use(passport.initialize());
 
-app.use(cors());
-app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.session());
+app.use(cors({ credentials: true, origin: true }));
+app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // 라우터
 // 모바일 앱
-app.use('/login', loginRouter); // 로그인
-app.use('/bulletin', bulletRouter); // 게시글
-app.use('/bus', busRouter);
-app.use('/as', asRouter);
-app.use('/hlth', hlthRouter);
-app.use('/stayout', stayoutRouter);
-app.use('/signin', signinRouter);
-app.use('/signin/hash', hashRouter);
+app.use("/auth", authRouter); // 로그인
+app.use("/bulletin", bulletRouter); // 게시글
+app.use("/bus", busRouter);
+app.use("/as", asRouter);
+app.use("/hlth", hlthRouter);
+app.use("/stayout", stayoutRouter);
+app.use("/signup", signUpRouter);
+app.use("/signin/hash", hashRouter);
+app.use("/comment", commentRouter);
 
 // 관리자 웹
 // 관리자 예약관리
-app.use('/admin/as', asAdminRouter); // A/S
-app.use('/admin/hlth', hlthAdminRouter); // 헬스
-app.use('/admin/stayout', stayoutAdminRouter); // 외박
-app.use('/admin/bus', busAdminRouter); // 셔틀 버스
+app.use("/admin/as", asAdminRouter); // A/S
+app.use("/admin/hlth", hlthAdminRouter); // 헬스
+app.use("/admin/stayout", stayoutAdminRouter); // 외박
+app.use("/admin/bus", busAdminRouter); // 셔틀 버스
 
 // 관리자 생활관 관리
-app.use('/admin/menu', menuAdminRouter); // 식단표
-app.use('/admin/businfo', busInfoAdminRouter); // 버스 시간표
-app.use('/admin/holiday', holidayAdminRouter); // 휴일
-app.use('/admin/agree', agreeAdminRouter); // 사용자 회원인증
+app.use("/admin/menu", menuAdminRouter); // 식단표
+app.use("/admin/businfo", busInfoAdminRouter); // 버스 시간표
+app.use("/admin/holiday", holidayAdminRouter); // 휴일
+app.use("/admin/agree", agreeAdminRouter); // 사용자 회원인증
 
 app.use((req, res, next) => {
-  const error = new Error(
-    `${req.method} ${req.url} 라우터가 없습니다.`
-  );
+  const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
   error.status = 404;
   next(error);
 });
@@ -82,6 +101,6 @@ app.use((req, res, next) => {
 //   res.render('error');
 // });
 
-app.listen(app.get('port'), () => {
-  console.log(app.get('port'), '번 포트에서 대기 중');
+app.listen(app.get("port"), () => {
+  console.log(app.get("port"), "번 포트에서 대기 중");
 });
