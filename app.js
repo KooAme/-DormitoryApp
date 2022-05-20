@@ -10,6 +10,7 @@ const signinRouter = require('./routes/Signin');
 const hashRouter = require('./routes/Hash');
 const asRouter = require('./routes/as');
 const imgRouter = require('./routes/image');
+const noticeRouter = require('./routes/notice');
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.set('port', process.env.PORT || 3001);
 sequelize
   .sync({
     force:
-      !true
+      true
   })
   .then(() => {
     console.log('데이터베이스 연결 성공');
@@ -44,6 +45,7 @@ app.use('/stayout', stayoutReqRouter);
 app.use('/signin', signinRouter);
 app.use('/signin/hash', hashRouter);
 app.use('/image', imgRouter);
+app.use('/notice', noticeRouter)
 
 app.use((req, res, next) => {
   const error = new Error(

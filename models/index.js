@@ -13,6 +13,7 @@ const StdInfo = require('./std_info');
 const Hot = require('./hot');
 const StdWait = require('./std_wait');
 const ImageArr = require('./image_arr');
+const Notice = require('./notice');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname +
@@ -42,6 +43,7 @@ db.StdInfo = StdInfo;
 db.Hot = Hot;
 db.StdWait = StdWait;
 db.ImageArr = ImageArr;
+db.Notice = Notice;
 
 AdmInfo.init(sequelize);
 AsRequest.init(sequelize);
@@ -57,6 +59,7 @@ StdInfo.init(sequelize);
 Hot.init(sequelize);
 StdWait.init(sequelize);
 ImageArr.init(sequelize);
+Notice.init(sequelize);
 
 AdmInfo.associate(db);
 AsRequest.associate(db);
@@ -72,5 +75,6 @@ StdInfo.associate(db);
 Hot.associate(db);
 StdWait.associate(db);
 ImageArr.associate(db);
+Notice.associate(db);
 
 module.exports = db;

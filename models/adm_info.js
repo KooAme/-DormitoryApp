@@ -30,5 +30,8 @@ module.exports = class AdmInfo extends Sequelize.Model {
     );
   }
   static associate(db) {
+    db.AdmInfo.hasMany(db.Notice, {
+      foreignKey: "adm_id",
+      sourceKey: "adm_id",    })
   };
 };
