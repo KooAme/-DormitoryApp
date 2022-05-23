@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
 body {
   margin: 0;
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: absolute;  
 }
 /* .container {
   width: 100%;
@@ -15,11 +16,11 @@ body {
   align-content: stretch;
 } */
 .mainBody{
-  width: auto;
-  height: 78vh;
+  width: 85vw;
+  height: 93vh;
   background-color: rgb(234 232 244);
-  margin-left: 20vh;
   overflow: auto;
+  position: relative;
 }
 .mainN{
   width:auto;
@@ -44,7 +45,34 @@ body {
   background-color: #21429d;
   
 }
+.filed{
+  height: 15vh;
+  width: 100%;
+}
+.inputA{ /*달력부분*/
+  background-color: #EDEDEE;
+    border: none;
+    padding: 12px 15px;
+    width: 24vw;
+}
+.inputB{
+  background-color: #EDEDEE;
+    border: none;
+    padding: 12px 15px;
 
+}
+.buttonStyle{
+  background-color: #2D3542;
+  color: aliceblue;
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  border-radius: 4px;
+  margin-left: 2vw;
+}
+
+.tableH{
+  width: 85vw;
+}
 .tableSet {
   margin-top: 10px;
   border: 1px gray solid;
@@ -53,6 +81,25 @@ body {
 .tableSet td,
 th {
   border: 1px gray solid;
+}
+
+.tableBox{
+  width: 85vw;
+  height: auto;
+  position: absolute;
+  text-align: center;
+  white-space: nowrap;
+}
+.trStyle{
+    color: white;
+    background-color: #2D3542;
+    ;
+    height: 4vh;
+    width: 85vw;
+}
+.mHead{
+  width: 85vw;
+  height: 25vh;
 }
 /* body {
   margin: 0;

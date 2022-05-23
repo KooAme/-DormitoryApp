@@ -6,7 +6,7 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
- }
+ } 
 .headerBox{
   border: 10px solid rgb(110, 144, 236);
   border-style: solid;

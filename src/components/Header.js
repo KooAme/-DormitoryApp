@@ -1,8 +1,9 @@
 import React from 'react';
-import './Css/Header.css';
+import './Css/JHeader.css';
+
 
 function Header(props) {
-  //let mode = props.mode; 
+  //let mode = props.mode;  
   const menus = { // 객체 
     Login: 'Login',
     ManagerPage: '초기 화면',
@@ -14,14 +15,15 @@ function Header(props) {
     ShuttleBus: '셔틀 버스 관리',
     DayOff: '휴일 관리',
     UserManager: '사용자 관리',
-  };
+  };//현재사용중인거
 
   return (
-    <div className='header'>
-      <div className='headerBox'> 
-      <div className='headerText'>{menus[props.mode]}</div>
-      </div>
+    <>
+    <div className='HeaderM'>
+      <div className='JHeaderText'>{menus[props.mode]}</div>
     </div>
+    <div className='HeaderMBox2'></div>
+    </>
   );
 }
 

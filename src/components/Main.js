@@ -10,7 +10,7 @@ import MenuPlanner from './Main/MenuPlanner';
 import DayOff from './Main/DayOff';
 import UserManager from './Main/UserManager';
 
-
+ 
 function Main(props) {
   let mode = props.mode;
 
@@ -38,19 +38,9 @@ function Main(props) {
   };
 
   return (
-    <div >
-      { <span className='mainN'style={{
-          color: 'white',
-          display: 'flex',
-          fontSize: '4vh',
-          textAlign:"center",
-          textIndent:'2vh',
-          verticalAlign: 'middle',
-        }}>
-        {text[mode]}
-      </span> }
+    <>
       {modes[mode]}
-    </div>
+      </>
   );
 }
 

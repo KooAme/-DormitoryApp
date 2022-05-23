@@ -42,12 +42,7 @@ function Menu(props) {
 
   return (
     <div className='menu'>
-      <p
-        className='MenuMenu'
-        onClick={() => props.onChangeMode(Object.keys(ms)[0])}
-      >
-        <strong>{ms['ManagerPage']}</strong>
-      </p>
+
       <p className='MenuName' onClick={ClickMenu}>
         {B1}
       </p>
@@ -77,7 +72,7 @@ function Menu(props) {
           {ms['ShuttleManager']}
         </li>
       </p>
-      <p className='MenuName1' onClick={ClickMenu1}>
+      <p className='MenuName' onClick={ClickMenu1}>
         {B2}
       </p>
       <p className='MenuDisappear1'>

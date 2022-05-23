@@ -1,5 +1,6 @@
-import React from 'react';
 import './Css/JHeader.css';
+import {GrUserManager} from "react-icons/gr";
+
 
 function Header(props) {
   //let mode = props.mode; 
@@ -15,12 +16,21 @@ function Header(props) {
     DayOff: '휴일 관리',
     UserManager: '사용자 관리',
   };
+  
+
 
   return (
-      <div className='JHeader'> 
-      <div className='JHeaderText'>{menus[props.mode]}</div>
-
+      <>
+      <div className='HeaderM'> 
+      {/* <div className='JHeaderText'>{menus[props.mode]}</div> */}
+      <div className='HeaderMBox'>
+            <div className='MHeaderText'>Menu</div>
+      </div>
+      <div className='HeaderTBox'>
+      <div className='MHeaderText'>{menus[props.mode]}</div>
+      </div>
     </div>
+    </>
   );
 }
 

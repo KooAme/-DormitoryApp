@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+input {
+	background-color: #EDEDEE;
+	border: none;
+	padding: 2vh 2vw;
+	margin: 8px 0;
+	width: 100%;
+}
+.loginHead{
+  background-color: #282C3C;
+  width: 100vw; 
+  height: 7vh; 
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  border-radius: 10px;
+
+}
+.HeadImg{
+  width: 6vh;  
+}
+.HeadText{
+  margin-bottom: 5px;
+  margin-left: 10px;
+  font-size: 5vh;
+  color: white;
+  /* font-family: 'Nanum Gothic', sans-serif; */
+  font-family: 'Noto Sans KR', sans-serif;
+  white-space:nowrap;
+}
+
+.loginBode{
+  background-color: #e2e2e2;
+  width: 60vw;
+  height: 65vh;
+  margin-top: 23.5vh;
+  position: absolute;
+  border-radius: 5px;
+  margin-left: 20vw;
+}
+
+
+.loginMain{
+  margin-top: 1vh;
+  margin-left: 1vh;
+  background-color:white;
+  width: 60vmin;
+  height: 63vh;
+  position: fixed; 
+  display: flex;
+}
+.loginImgBox{
+  margin-top: 1vh;
+  margin-right: 1vh;
+  background-color:black;
+  width: 30vw;
+  height: 63vh;
+  position: fixed; 
+}
+.loginImg{
+
+}
+.loginText{
+  text-align: center;
+  margin-top: 15vh;
+  font-size: 4vh;
+  font-weight: 700;
+  white-space:nowrap; 
+  position: absolute;
+
+}
+
+.login_id input {
+  margin-left: 2.25vh;
+  width: 25vw;
+  height: 6vh;
+  border-radius: 30px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+  white-space:nowrap;
+  position: absolute;
+
+}
+
+.login_id {
+  margin-top: 20px;
+  width: 80%;
+  white-space:nowrap;
+  position: absolute;
+}
+.login_pw {
+  margin-top: 20px;
+  width: 80%;
+  white-space:nowrap;
+  position: absolute;
+
+}
+
+.login_pw input {
+  margin-left: 2.25vh;
+  width: 25vw;
+  height: 6vh;
+  border-radius: 30px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+  white-space:nowrap;
+  position: absolute;
+  
+} 
+
+
+/* 
+.login {
+  background: white;
+  height: 63vh;
+  border-radius: 3px;
+  
+} */
+
+
+/* .login h1 {
+  
+  line-height: 40px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+  text-shadow: 0 1px white;
+  background: #f3f3f3;
+  border-bottom: 1px solid #cfcfcf;
+  border-radius: 3px 3px 0 0;
+
+  -webkit-box-shadow: 0 1px whitesmoke;
+  box-shadow: 0 1px whitesmoke;
+}
+ */
+
+
+
+
+
+
+
+
+/* .container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+} 
+.login {
+  height: 70%;
+  width: 100%;
+}
+.loginOver,
+.loginOverFont,
+
+.symbolImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.loginUnder{
+  height: auto;
+  width: auto;
+  font-size: 2vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+
+.loginOver {
+  display: flex;
+  height: 7vh;
+  width: auto;
+  background-color: darkcyan;
+  font-size: 1.2vh;
+  color: white;
+}
+
+.loginOverFont {
+  font-size: 200%;
+  color: white;
+}
+
+.loginUnder {
+  display: flex;
+  height: 63vh;
+  width: 100%;
+  line-height: 25px;
+}
+
+.symbolImg {
+  height: 70%;
+}
+
+.loginText {
+  display: flex;
+  align-items: left;
+  height: 30px;
+  margin-top: 5%;
+}
+
+.loginInput {
+  height: 25px;
+  width: 250px;
+}
+
+.loginButton {
+  padding: 5px 30px 5px 30px;
+  border: 0px;
+  font-size: 20px;
+  background-color: rgb(0, 0, 124);
+  color: white;
+  border-radius: 5px;
+}
+ */

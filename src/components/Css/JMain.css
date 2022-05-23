@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+.mainBody{
+  width: 85vw;
+  height: 93vh;
+  background-color: rgb(234 232 244);
+  overflow: auto;
+  position: relative;
+}

@@ -2,8 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Menu from './components/Menu';
 import Login from './components/Login';
-import Header from './components/Header';
+import Header from './components/JHeader';
 import Main from './components/Main';
+import Calendar from './components/Calender';
+
 
 function App(props) {
   const [isLogin, setIsLogin] = useState(false);
@@ -27,17 +29,17 @@ function App(props) {
 
   if (!isLogin) {
     return (
-      <>
-        <Header mode={'Login'} />
+      <div className='containerL'>
         <Login button={clickButton} />
-      </>
+      </div>
     );
-  } else {
+  } else { 
     return (
-      <div>
+      <div className='containerM'>
         <Header mode={mode} />
         <Menu onChangeMode={onChangeMode}></Menu>
         <Main mode={mode} />
+
       </div>
     );
   }

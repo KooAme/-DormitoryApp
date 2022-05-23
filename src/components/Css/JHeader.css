@@ -3,22 +3,94 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: absolute; 
 }
 
-.Header{
+.Header{  /*로그인페이지 헤더*/
   display: flex;
   background-color: #3e3e5f;
   width: 100vw;
   height:10vh ;
 }
-.JHeaderText{
+.HeaderM{   /*메인페이지 헤더*/  
+  display: flex;
+  background-color: #2D3542;
+  width: 100vw;
+  height: 7vh;
+  position: relative;
+}
+.HeaderMBox{  /*메인페이지 헤더 박스 */
+  display: flex;
+  background-color: #2D3542;
+  width: 15vw;
+  height: 7vh;
+  position: relative;
+  box-sizing: border-box;
+  border: ridge 2px white;
+}
+.HeaderTBox{
+  display: flex;
+  background-color: #2D3542;
+  width: 85vw;
+  height: 7vh;
+  position: relative;
+  box-sizing: border-box;
+  border: ridge 2px white;
+}
+.MHeaderText{   /*메인 헤더 글자 크기*/
+  /* text-shadow: 4px 4px 4px  rgb(164, 179, 185) ; */
+  font-family: 'Noto Sans KR', sans-serif;  
+  font-size: 20px;
+  color:rgb(255, 255, 255);
+  text-align: center ;
+  line-height: 7vh;
+  /* font-weight: 700; */
+  width: 15vw;
+  white-space: nowrap;
+}
+.HeaderText{
+  font-family: 'Noto Sans KR', sans-serif;  
+  font-size: 40px;
+  color:rgb(255, 255, 255);
+  line-height: 7vh;
+  font-weight: 700;
+  width: 15vw;
+  white-space: nowrap;
+}
+
+.JHeaderText{   /*로그인 헤더 글자 크기*/
   text-shadow: 4px 4px 4px  rgb(164, 179, 185) ;
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 8vh;
+  font-size: 6vh;
   color:white;
   text-align: center ;
   height: auto;
   font-weight: 700;
-  width: auto;
+  width: 100vw;
+}
+.HeaderMBox2{
+  display: flex;
+  width: 20vw;
+  height: 20vh;
+  background-color: #282C3C;
+}
+
+.containerL{ /* 컨테이너 로그인 페이지 전체 화면 설정 */
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  position: absolute;
+  opacity: 0.9;
+}
+
+.containerM{  /* 컨테이너 메인 페이지 전체화면 설정 */
+  width: 100vw;
+  height: 100vh;
+  background-color: blue;
+  position: relative;
+}
+
+.icon{
+  size:50vh;
+
 }
